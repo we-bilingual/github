@@ -753,6 +753,11 @@
       font-weight:700;
     }
 
+    /* Mobile gets its own short ALYX copy (see final override); desktop keeps the original text */
+    .alyx-feature-copy-mobile{
+      display:none;
+    }
+
     .alyx-feature-right{
       position:relative;
       padding:36px 32px;
@@ -1352,6 +1357,30 @@
       background:#fff;
       border-color:#fff;
       color:var(--navy);
+    }
+
+    /* Accordion header/body wrappers — layout-neutral on desktop, collapsible on mobile (see final override) */
+    .product-card-toggle{
+      all:unset;
+      display:block;
+      width:100%;
+      cursor:default;
+      font:inherit;
+      color:inherit;
+    }
+
+    .product-card-toggle-text{
+      display:block;
+    }
+
+    .product-card-icon{
+      display:none;
+    }
+
+    .product-card-body{
+      display:flex;
+      flex-direction:column;
+      flex:1;
     }
 
     .self-paced {
@@ -3276,7 +3305,7 @@
         display:none !important;
       }
 
-      /* 2) ALYX — text and phone mockup become one horizontal peek carousel */
+      /* 2) ALYX — text and phone mockup stay a horizontal peek carousel, text now short and centered */
       .alyx-feature{
         display:flex !important;
         grid-template-columns:none !important;
@@ -3295,25 +3324,63 @@
         scroll-snap-stop:always;
       }
       .alyx-feature-right{ min-height:auto !important; }
-
-      /* 3) Raio-X + Aulas Individuais as a horizontal peek carousel */
-      .primary-products{
-        display:flex !important;
-        grid-template-columns:none !important;
-        overflow-x:auto;
-        overflow-y:hidden;
-        gap:12px;
-        scroll-snap-type:x mandatory;
-        -webkit-overflow-scrolling:touch;
-        scrollbar-width:none;
-        padding-bottom:2px;
+      .alyx-feature-left{
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
       }
-      .primary-products::-webkit-scrollbar{ display:none; }
+      .alyx-feature-copy-desktop{ display:none; }
+      .alyx-feature-copy-mobile{ display:block; }
+      .teacher-card{ display:none; }
+
+      /* 3) Raio-X + Aulas Individuais become closed-by-default accordions (no more carousel) */
+      .primary-products{
+        display:grid;
+        grid-template-columns:1fr;
+        gap:14px;
+      }
       .product-card{
-        flex:0 0 84%;
-        width:84%;
-        scroll-snap-align:start;
-        scroll-snap-stop:always;
+        min-height:auto;
+        padding:24px 22px;
+      }
+      .product-card-toggle{
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        gap:16px;
+        cursor:pointer;
+      }
+      .product-card-toggle-text .tag{ margin-bottom:8px; }
+      .product-card-toggle-text h3{ font-size:1.7rem; margin-bottom:0; }
+      .product-card-icon{
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        flex:0 0 auto;
+        width:32px;
+        height:32px;
+        border-radius:50%;
+        border:1px solid var(--line);
+        color:var(--navy);
+        transition:transform .25s ease;
+      }
+      .product-card-icon::before{ content:"+"; font-size:1.2rem; line-height:1; }
+      .product-card.dark .product-card-icon{
+        border-color:rgba(255,255,255,.3);
+        color:#fff;
+      }
+      .product-card.is-open .product-card-icon{
+        transform:rotate(135deg);
+      }
+      .product-card-body{
+        display:block;
+        max-height:0;
+        overflow:hidden;
+        transition:max-height .35s ease;
+      }
+      .product-card-body p{ margin-top:18px; }
+      .product-card.is-open .product-card-body{
+        max-height:640px;
       }
 
       /* 4) Viajando sem Perrengue + IQL as a horizontal peek carousel */
@@ -3334,6 +3401,12 @@
         width:84%;
         scroll-snap-align:start;
         scroll-snap-stop:always;
+      }
+
+      /* 5) ALYX phone preview — peek the next screen instead of a full-bleed swap */
+      .phone-screen-slide{
+        flex:0 0 88%;
+        width:88%;
       }
     }
 </style>
@@ -3445,13 +3518,21 @@
 
   <section class="alyx-feature">
         <div class="alyx-feature-left">
-          <div class="eyebrow">Plataforma de apoio</div>
-          <h3>ALYX leva a prática para além da aula.</h3>
-          <p>
-            Quem faz as aulas personalizadas também acessa a ALYX: uma plataforma que mantém
-            o inglês em movimento com conversação, pronúncia, exercícios, quizzes e tarefas
-            diárias no dia a dia.
-          </p>
+          <div class="alyx-feature-copy alyx-feature-copy-desktop">
+            <div class="eyebrow">Plataforma de apoio</div>
+            <h3>ALYX leva a prática para além da aula.</h3>
+            <p>
+              Quem faz as aulas personalizadas também acessa a ALYX: uma plataforma que mantém
+              o inglês em movimento com conversação, pronúncia, exercícios, quizzes e tarefas
+              diárias no dia a dia.
+            </p>
+          </div>
+
+          <div class="alyx-feature-copy alyx-feature-copy-mobile">
+            <div class="eyebrow">ALYX</div>
+            <h3>A prática continua entre uma aula e outra.</h3>
+            <p>Quem faz as aulas personalizadas também tem acesso à ALYX.</p>
+          </div>
 
           <div class="alyx-pill-row">
             <span>Professor de IA</span>
@@ -3613,34 +3694,49 @@
 
       <div class="primary-products">
         <article class="product-card">
-          <div class="tag">Para quem ainda quer entender o caminho</div>
-          <h3>Raio-X do Inglês</h3>
-          <p>
-            Descubra onde seu inglês está hoje — e o que precisa acontecer para ele avançar.
-          </p>
-          <ul>
-            <li>Encontro individual</li>
-            <li>Leitura do seu momento atual</li>
-            <li>Mapeamento de objetivos e bloqueios</li>
-            <li>Direcionamento dos próximos passos</li>
-          </ul>
-          <a href="#inicio" class="button button-outline">Quero fazer meu Raio-X</a>
+          <button class="product-card-toggle" type="button" aria-expanded="false">
+            <span class="product-card-toggle-text">
+              <span class="tag">Para quem ainda quer entender o caminho</span>
+              <h3>Raio-X do Inglês</h3>
+            </span>
+            <span class="product-card-icon" aria-hidden="true"></span>
+          </button>
+          <div class="product-card-body">
+            <p>
+              Descubra onde seu inglês está hoje — e o que precisa acontecer para ele avançar.
+            </p>
+            <ul>
+              <li>Encontro individual</li>
+              <li>Leitura do seu momento atual</li>
+              <li>Mapeamento de objetivos e bloqueios</li>
+              <li>Direcionamento dos próximos passos</li>
+            </ul>
+            <a href="#inicio" class="button button-outline">Quero fazer meu Raio-X</a>
+          </div>
         </article>
 
         <article class="product-card dark">
-          <div class="tag">Para quem já quer acompanhamento individual</div>
-          <h3>Aulas Individuais</h3>
-          <p>
-            Um inglês construído em torno de você, com frequência e estratégia definidas
-            conforme sua rotina, objetivo e momento.
-          </p>
-          <ul>
-            <li>Aulas particulares e 100% online</li>
-            <li>Planos semanais e quinzenais</li>
-            <li>Conteúdo personalizado</li>
-            <li>Acesso à ALYX para prática no dia a dia</li>
-          </ul>
-          <a href="#inicio" class="button button-outline">Quero conhecer os planos</a>
+          <button class="product-card-toggle" type="button" aria-expanded="false">
+            <span class="product-card-toggle-text">
+              <span class="tag">Para quem já quer acompanhamento individual</span>
+              <h3>Aulas Individuais</h3>
+            </span>
+            <span class="product-card-icon" aria-hidden="true"></span>
+          </button>
+          <div class="product-card-body">
+            <p>
+              Um inglês construído em torno de você, com frequência e estratégia definidas
+              conforme sua rotina, objetivo e momento.
+            </p>
+            <ul>
+              <li>Aulas particulares e 100% online</li>
+              <li>Plano personalizado</li>
+              <li>Opções semanais ou quinzenais</li>
+              <li>Acompanhamento da evolução</li>
+              <li>Acesso à ALYX para prática entre aulas</li>
+            </ul>
+            <a href="#inicio" class="button button-outline">Quero conhecer os planos</a>
+          </div>
         </article>
       </div>
 
@@ -3965,9 +4061,13 @@
     let alyxCurrent = 0;
     let alyxStartX = null;
 
+    function alyxSlideStep() {
+      return window.matchMedia("(max-width: 980px)").matches ? 88 : 100;
+    }
+
     function showAlyxSlide(index) {
       alyxCurrent = Math.max(0, Math.min(index, 1));
-      alyxTrack.style.transform = `translateX(-${alyxCurrent * 100}%)`;
+      alyxTrack.style.transform = `translateX(-${alyxCurrent * alyxSlideStep()}%)`;
       alyxDots.forEach((dot, i) => dot.classList.toggle("active", i === alyxCurrent));
       alyxCaption.innerHTML = `<strong>${alyxCaptions[alyxCurrent][0]}</strong><span>${alyxCaptions[alyxCurrent][1]}</span>`;
     }
@@ -4142,6 +4242,15 @@
 
     document.addEventListener("keydown", (event) => {
       if (event.key === "Escape" && legalModal && !legalModal.hidden) closeLegalModal();
+    });
+
+    document.querySelectorAll(".product-card-toggle").forEach(btn => {
+      btn.addEventListener("click", () => {
+        if (!window.matchMedia("(max-width: 980px)").matches) return;
+        const card = btn.closest(".product-card");
+        const isOpen = card.classList.toggle("is-open");
+        btn.setAttribute("aria-expanded", String(isOpen));
+      });
     });
 </script>
 
