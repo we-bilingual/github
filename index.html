@@ -758,6 +758,18 @@
       display:none;
     }
 
+    /* ALYX app teaser + expandable sheet — mobile only (see final override) */
+    .alyx-app-teaser,
+    .alyx-sheet-close,
+    .alyx-sheet-backdrop{
+      display:none;
+    }
+
+    /* Mobile course switcher (tabs) for the self-paced courses — desktop keeps the mini-grid cards */
+    .course-switcher{
+      display:none;
+    }
+
     .alyx-feature-right{
       position:relative;
       padding:36px 32px;
@@ -3305,33 +3317,113 @@
         display:none !important;
       }
 
-      /* 2) ALYX — text and phone mockup stay a horizontal peek carousel, text now short and centered */
+      /* 2) ALYX — short copy only; the phone mockup moves into a tap-to-open bottom sheet */
       .alyx-feature{
-        display:flex !important;
+        display:block !important;
         grid-template-columns:none !important;
-        overflow-x:auto;
-        overflow-y:hidden;
-        scroll-snap-type:x mandatory;
-        -webkit-overflow-scrolling:touch;
-        scrollbar-width:none;
       }
-      .alyx-feature::-webkit-scrollbar{ display:none; }
-      .alyx-feature-left,
-      .alyx-feature-right{
-        flex:0 0 88%;
-        width:88%;
-        scroll-snap-align:start;
-        scroll-snap-stop:always;
-      }
-      .alyx-feature-right{ min-height:auto !important; }
       .alyx-feature-left{
-        display:flex;
-        flex-direction:column;
-        justify-content:center;
+        width:100%;
+        flex:none;
       }
       .alyx-feature-copy-desktop{ display:none; }
       .alyx-feature-copy-mobile{ display:block; }
       .teacher-card{ display:none; }
+      .alyx-included{ display:none; }
+
+      .alyx-app-teaser{
+        all:unset;
+        display:flex;
+        align-items:center;
+        gap:14px;
+        width:100%;
+        box-sizing:border-box;
+        margin-top:22px;
+        padding:14px 16px;
+        border-radius:16px;
+        background:rgba(255,255,255,.07);
+        border:1px solid rgba(255,255,255,.16);
+        cursor:pointer;
+      }
+      .alyx-app-teaser-phone{
+        position:relative;
+        flex:0 0 auto;
+        width:30px;
+        height:48px;
+        border-radius:7px;
+        border:2px solid #fff;
+      }
+      .alyx-app-teaser-dot{
+        position:absolute;
+        left:50%;
+        bottom:5px;
+        width:4px;
+        height:4px;
+        border-radius:50%;
+        background:#fff;
+        transform:translateX(-50%);
+      }
+      .alyx-app-teaser-text{
+        font-weight:700;
+        font-size:.92rem;
+        color:#fff;
+      }
+
+      .alyx-feature-right{
+        position:fixed;
+        left:0;
+        right:0;
+        bottom:0;
+        z-index:220;
+        width:auto;
+        max-height:88vh;
+        overflow-y:auto;
+        border-radius:24px 24px 0 0;
+        padding:28px 20px 24px;
+        min-height:auto !important;
+        transform:translateY(110%);
+        visibility:hidden;
+        transition:transform .35s cubic-bezier(.2,.75,.25,1), visibility 0s linear .35s;
+        box-shadow:0 -20px 60px rgba(15,35,64,.35);
+      }
+      .alyx-sheet-close{
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        position:absolute;
+        top:14px;
+        right:14px;
+        width:34px;
+        height:34px;
+        border-radius:50%;
+        border:1px solid rgba(15,35,64,.15);
+        background:#fff;
+        color:var(--navy);
+        font-size:1.15rem;
+        line-height:1;
+        z-index:5;
+        cursor:pointer;
+      }
+      .alyx-sheet-backdrop{
+        display:block;
+        position:fixed;
+        inset:0;
+        background:rgba(15,35,64,.45);
+        z-index:210;
+        opacity:0;
+        pointer-events:none;
+        transition:opacity .3s ease;
+      }
+      body.alyx-sheet-open{ overflow:hidden; }
+      body.alyx-sheet-open .alyx-feature-right{
+        transform:translateY(0);
+        visibility:visible;
+        transition:transform .35s cubic-bezier(.2,.75,.25,1);
+      }
+      body.alyx-sheet-open .alyx-sheet-backdrop{
+        opacity:1;
+        pointer-events:auto;
+      }
 
       /* 3) Raio-X + Aulas Individuais become closed-by-default accordions (no more carousel) */
       .primary-products{
@@ -3383,24 +3475,67 @@
         max-height:640px;
       }
 
-      /* 4) Viajando sem Perrengue + IQL as a horizontal peek carousel */
-      .mini-grid{
-        display:flex !important;
-        grid-template-columns:none !important;
-        overflow-x:auto;
-        overflow-y:hidden;
-        gap:12px;
-        scroll-snap-type:x mandatory;
-        -webkit-overflow-scrolling:touch;
-        scrollbar-width:none;
-        padding-bottom:2px;
+      /* 4) Viajando sem Perrengue + IQL become a tab switcher instead of stacked/carousel cards */
+      .mini-grid{ display:none; }
+      .course-switcher{ display:block; }
+
+      .course-tabs{
+        display:flex;
+        gap:4px;
+        padding:4px;
+        border-radius:999px;
+        background:var(--off);
+        margin-bottom:20px;
       }
-      .mini-grid::-webkit-scrollbar{ display:none; }
-      .mini-product{
-        flex:0 0 84%;
-        width:84%;
-        scroll-snap-align:start;
-        scroll-snap-stop:always;
+      .course-tab{
+        all:unset;
+        flex:1;
+        box-sizing:border-box;
+        text-align:center;
+        padding:10px 10px;
+        border-radius:999px;
+        font-size:.82rem;
+        font-weight:700;
+        color:var(--muted);
+        cursor:pointer;
+      }
+      .course-tab.is-active{
+        background:#fff;
+        color:var(--navy);
+        box-shadow:0 8px 20px rgba(15,35,64,.10);
+      }
+      .course-panel h4{
+        font-family:"Playfair Display", Georgia, serif;
+        font-size:1.5rem;
+        letter-spacing:-.02em;
+        margin-bottom:8px;
+      }
+      .course-panel p{
+        color:var(--muted);
+        font-size:.94rem;
+        margin-bottom:16px;
+      }
+      .course-panel ul{
+        list-style:none;
+        padding:0;
+        margin:0 0 22px;
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:10px 14px;
+      }
+      .course-panel li{
+        position:relative;
+        padding-left:20px;
+        font-size:.88rem;
+        color:#324055;
+      }
+      .course-panel li::before{
+        content:"✦";
+        position:absolute;
+        left:0;
+        top:1px;
+        color:var(--red);
+        font-size:.75rem;
       }
 
       /* 5) ALYX phone preview — peek the next screen instead of a full-bleed swap */
@@ -3562,9 +3697,15 @@
           </div>
 
           <div class="alyx-included">Inclusa nas aulas personalizadas</div>
+
+          <button class="alyx-app-teaser" type="button" aria-haspopup="dialog" aria-controls="alyxSheet">
+            <span class="alyx-app-teaser-phone" aria-hidden="true"><span class="alyx-app-teaser-dot"></span></span>
+            <span class="alyx-app-teaser-text">Ver a plataforma <span aria-hidden="true">→</span></span>
+          </button>
         </div>
 
-        <div class="alyx-feature-right">
+        <div class="alyx-feature-right" id="alyxSheet">
+          <button class="alyx-sheet-close" type="button" aria-label="Fechar">×</button>
           <div class="app-preview">
             <div class="app-preview-head">
               <span>Explore a ALYX</span>
@@ -3597,6 +3738,8 @@
           </div>
         </div>
       </section>
+
+      <div class="alyx-sheet-backdrop" id="alyxSheetBackdrop"></div>
 
       <div class="mila-section">
         <div class="mila-head">
@@ -3764,6 +3907,41 @@
             </div>
             <a href="https://hotmart.com/pt-br/marketplace/produtos/ingles-em-qualquer-lugar/M70985834E" target="_blank" rel="noopener noreferrer" aria-label="Conhecer o curso Inglês em Qualquer Lugar">Conhecer o IQL →</a>
           </article>
+        </div>
+
+        <div class="course-switcher">
+          <div class="course-tabs" role="tablist" aria-label="Cursos para estudar com autonomia">
+            <button class="course-tab is-active" type="button" role="tab" aria-selected="true" data-course="travel">Viajando sem Perrengue</button>
+            <button class="course-tab" type="button" role="tab" aria-selected="false" data-course="iql">IQL</button>
+          </div>
+
+          <div class="course-panel" data-course-panel="travel">
+            <h4>Viajando sem Perrengue</h4>
+            <p>Inglês essencial para viagens: situações reais, comunicação prática e mais segurança para se virar sem perrengue.</p>
+            <ul>
+              <li>Imigração</li>
+              <li>Transporte</li>
+              <li>Hotel</li>
+              <li>Restaurante</li>
+              <li>Comunicação durante a viagem</li>
+            </ul>
+            <a href="https://hotmart.com/pt-br/marketplace/produtos/ingles-para-viagem-viajando-sem-perrengue/S81341382M?sck=HOTMART_SITE&search=03b13b6e-6ba0-45e1-adf7-198c3319f5a4&hotfeature=33" target="_blank" rel="noopener noreferrer" class="button button-outline">Conhecer o curso →</a>
+          </div>
+
+          <div class="course-panel" data-course-panel="iql" hidden>
+            <h4>IQL — Inglês em Qualquer Lugar</h4>
+            <p>Uma jornada completa de inglês para estudar com autonomia, com estrutura, acompanhamento e prática ao longo da jornada.</p>
+            <ul>
+              <li>Níveis A1 e A2</li>
+              <li>10 módulos</li>
+              <li>Explicações gramaticais</li>
+              <li>Exemplos de conversação</li>
+              <li>Acesso por 2 anos</li>
+              <li>Grupo de WhatsApp</li>
+              <li>Aulas ao vivo para prática</li>
+            </ul>
+            <a href="https://hotmart.com/pt-br/marketplace/produtos/ingles-em-qualquer-lugar/M70985834E" target="_blank" rel="noopener noreferrer" class="button button-outline">Conhecer o IQL →</a>
+          </div>
         </div>
       </div>
     </div>
@@ -4250,6 +4428,39 @@
         const card = btn.closest(".product-card");
         const isOpen = card.classList.toggle("is-open");
         btn.setAttribute("aria-expanded", String(isOpen));
+      });
+    });
+
+    const alyxTeaser = document.querySelector(".alyx-app-teaser");
+    const alyxSheetClose = document.querySelector(".alyx-sheet-close");
+    const alyxSheetBackdrop = document.getElementById("alyxSheetBackdrop");
+
+    function openAlyxSheet() {
+      document.body.classList.add("alyx-sheet-open");
+    }
+    function closeAlyxSheet() {
+      document.body.classList.remove("alyx-sheet-open");
+    }
+    if (alyxTeaser) alyxTeaser.addEventListener("click", openAlyxSheet);
+    if (alyxSheetClose) alyxSheetClose.addEventListener("click", closeAlyxSheet);
+    if (alyxSheetBackdrop) alyxSheetBackdrop.addEventListener("click", closeAlyxSheet);
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && document.body.classList.contains("alyx-sheet-open")) closeAlyxSheet();
+    });
+
+    const courseTabs = [...document.querySelectorAll(".course-tab")];
+    const coursePanels = [...document.querySelectorAll(".course-panel")];
+    courseTabs.forEach(tab => {
+      tab.addEventListener("click", () => {
+        const key = tab.dataset.course;
+        courseTabs.forEach(t => {
+          const active = t === tab;
+          t.classList.toggle("is-active", active);
+          t.setAttribute("aria-selected", String(active));
+        });
+        coursePanels.forEach(panel => {
+          panel.hidden = panel.dataset.coursePanel !== key;
+        });
       });
     });
 </script>
