@@ -3563,13 +3563,7 @@
         font-size:.75rem;
       }
 
-      /* 5) ALYX phone preview — peek the next screen instead of a full-bleed swap */
-      .phone-screen-slide{
-        flex:0 0 88%;
-        width:88%;
-      }
-
-      /* 6) Screen 2's header sat under the phone notch — push it down using the same
+      /* 5) Screen 2's header sat under the phone notch — push it down using the same
          absolute-positioning technique already used (and working) for screen 1, so the
          clearance is a plain top/height calc instead of a flex-item percentage that some
          mobile browsers (Safari) were resolving differently. */
@@ -4283,13 +4277,9 @@
     let alyxCurrent = 0;
     let alyxStartX = null;
 
-    function alyxSlideStep() {
-      return window.matchMedia("(max-width: 980px)").matches ? 88 : 100;
-    }
-
     function showAlyxSlide(index) {
       alyxCurrent = Math.max(0, Math.min(index, 1));
-      alyxTrack.style.transform = `translateX(-${alyxCurrent * alyxSlideStep()}%)`;
+      alyxTrack.style.transform = `translateX(-${alyxCurrent * 100}%)`;
       alyxDots.forEach((dot, i) => dot.classList.toggle("active", i === alyxCurrent));
       alyxCaption.innerHTML = `<strong>${alyxCaptions[alyxCurrent][0]}</strong><span>${alyxCaptions[alyxCurrent][1]}</span>`;
     }
@@ -4356,7 +4346,7 @@
           </ul>
           <div class="info-highlight">Uma preparação objetiva para quem quer viajar com mais confiança e menos perrengue.</div>
           <div class="info-person">
-            <strong>Idealizado por Natália Portes</strong><br>
+            <strong>Idealizado por Natália Ports</strong><br>
             Fundadora da We Bilingual, pedagoga, com MBA em Língua Inglesa, especialista em ensino bilíngue e professora internacional de inglês com certificação TESOL — Teaching English to Speakers of Other Languages.
           </div>
         `
@@ -4376,7 +4366,7 @@
             <li>Aulas ao vivo para prática de conversação</li>
           </ul>
           <div class="info-person">
-            <strong>Idealizado por Natália Portes</strong><br>
+            <strong>Idealizado por Natália Ports</strong><br>
             Fundadora da We Bilingual, pedagoga, com MBA em Língua Inglesa, especialista em ensino bilíngue e professora internacional de inglês com certificação TESOL — Teaching English to Speakers of Other Languages.
           </div>
         `
