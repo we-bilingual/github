@@ -950,13 +950,14 @@
     }
 
     .phone-screen-slide:nth-child(2){
+      position:relative;
       background:#fff;
-      display:flex;
-      align-items:flex-start;
-      justify-content:center;
     }
 
     .phone-screen-slide:nth-child(2) img{
+      position:absolute;
+      left:0;
+      top:0;
       width:100%;
       height:100%;
       object-fit:contain;
@@ -3566,10 +3567,13 @@
         width:88%;
       }
 
-      /* 6) Screen 2 was rendering flush with the top, so its own header sat under the phone notch */
-      .phone-screen-slide:nth-child(2){
-        padding-top:32px;
-        box-sizing:border-box;
+      /* 6) Screen 2's header sat under the phone notch — push it down using the same
+         absolute-positioning technique already used (and working) for screen 1, so the
+         clearance is a plain top/height calc instead of a flex-item percentage that some
+         mobile browsers (Safari) were resolving differently. */
+      .phone-screen-slide:nth-child(2) img{
+        top:36px;
+        height:calc(100% - 36px);
       }
 
       /* 7) The book cover has much less copy than the inner pages — center it instead of leaving it top-heavy */
