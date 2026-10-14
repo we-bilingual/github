@@ -586,16 +586,21 @@
       font-size:.87rem;
     }
 
-    .mila-section { margin-top:70px; }
+    .mila-section { padding:70px 0 100px; }
+
+    .mila-layout{
+      display:grid;
+      grid-template-columns:.62fr 1.38fr;
+      gap:64px;
+      align-items:center;
+    }
 
     .mila-cta{
-      margin-top:36px;
-      text-align:center;
+      margin-top:32px;
     }
 
     .mila-head {
-      margin-bottom:22px;
-      max-width:720px;
+      max-width:420px;
     }
 
     .mila-head h3 {
@@ -607,6 +612,8 @@
     }
 
     .mila-head h3 em{ font-style:italic; font-weight:500; color:var(--red); }
+
+    .mila-head p strong{ color:var(--navy); font-weight:700; }
 
     .mila-head p {
       color:var(--muted);
@@ -1215,131 +1222,43 @@
       line-height:1.4;
     }
 
-    .mila-book{
-      perspective:1800px;
-      margin-top:24px;
-    }
-
-    .book-shell{
-      position:relative;
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      min-height:520px;
-      border-radius:26px;
-      box-shadow:0 28px 70px rgba(15,35,64,.14);
-      background:#DED7CA;
-      padding:10px;
-      overflow:hidden;
-    }
-
-    .book-spine{
-      position:absolute;
-      top:10px;
-      bottom:10px;
-      left:50%;
-      width:22px;
-      transform:translateX(-50%);
-      background:linear-gradient(90deg,rgba(15,35,64,.16),rgba(255,255,255,.55),rgba(15,35,64,.12));
-      z-index:5;
-      pointer-events:none;
-    }
-
-    .book-page{
-      position:relative;
-      min-height:500px;
-      background:
-        linear-gradient(rgba(15,35,64,.035) 1px, transparent 1px) 0 0 / 100% 32px,
-        #FCFBF6;
-    }
-
-    .book-left{
-      border-radius:18px 2px 2px 18px;
-      border-right:1px solid #D6CFC3;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:48px;
-    }
-
-    .book-right{
-      border-radius:2px 18px 18px 2px;
-      overflow:hidden;
-      padding:0;
-    }
-
-    .book-left-inner{
-      max-width:330px;
-    }
-
-    .book-small,
-    .chapter{
-      font-size:.74rem;
-      letter-spacing:.18em;
-      text-transform:uppercase;
-      font-weight:700;
-      color:var(--blue-mid);
-    }
-
-    .book-title{
-      font-family:"Playfair Display",Georgia,serif;
-      font-size:5.8rem;
-      line-height:.9;
-      color:var(--navy);
-      margin:18px 0 26px;
-      letter-spacing:-.05em;
-    }
-
-    .book-left p{
-      font-family:"Playfair Display",Georgia,serif;
-      font-size:1.55rem;
-      line-height:1.15;
-      color:#46546A;
-    }
-
-    .book-left p em{
-      color:var(--navy);
-    }
-
-    .book-progress{
-      margin-top:36px;
-      border-top:1px solid #D7D0C4;
-      padding-top:16px;
-      color:#7C8798;
-      font-size:.82rem;
-    }
+    .mila-book{}
 
     .flip-stage{
-      position:relative;
-      min-height:440px;
+      display:flex;
+      border-radius:26px;
+      box-shadow:0 28px 70px rgba(15,35,64,.14);
+      overflow:hidden;
+      min-height:480px;
     }
 
     .flip-sheet{
-      position:absolute;
-      inset:0;
+      position:relative;
+      flex:1 1 0%;
       opacity:0;
-      transform-origin:left center;
-      transform:rotateY(-14deg) translateX(20px);
-      pointer-events:none;
-      transition:opacity .28s ease, transform .48s cubic-bezier(.2,.75,.25,1);
+      transform:translateX(-18px);
+      transition:opacity .7s ease, transform .7s cubic-bezier(.2,.75,.25,1);
       background:#FCFBF6;
     }
 
-    .flip-sheet.active{
-      opacity:1;
-      transform:rotateY(0deg) translateX(0);
-      pointer-events:auto;
-      z-index:2;
+    .flip-sheet:not(:last-child){
+      border-right:1px solid rgba(15,35,64,.08);
     }
 
-    .flip-sheet.turning-out{
-      opacity:0;
-      transform:rotateY(-78deg) translateX(-8px);
+    #milaBook.is-open .flip-sheet{
+      opacity:1;
+      transform:none;
     }
+
+    #milaBook.is-open .flip-sheet:nth-child(1){ transition-delay:0s; }
+    #milaBook.is-open .flip-sheet:nth-child(2){ transition-delay:.12s; }
+    #milaBook.is-open .flip-sheet:nth-child(3){ transition-delay:.24s; }
+    #milaBook.is-open .flip-sheet:nth-child(4){ transition-delay:.36s; }
 
     .page-face{
       height:100%;
-      min-height:440px;
-      padding:48px 50px 34px;
+      min-height:480px;
+      padding:40px 32px 36px;
       display:flex;
       flex-direction:column;
       justify-content:center;
@@ -1367,112 +1286,42 @@
       z-index:-1;
     }
 
-    .cover-face{
-      align-items:flex-start;
-      background:
-        radial-gradient(circle at 85% 15%,rgba(43,95,165,.07),transparent 38%),
-        #FCFBF6;
-    }
-
-    .cover-face h4{
-      font-family:"Playfair Display",Georgia,serif;
-      font-size:5rem;
-      margin:18px 0 8px;
-      color:var(--navy);
-      letter-spacing:-.05em;
-    }
-
-    .cover-face p{
-      color:var(--muted);
-      font-size:1.05rem;
-      margin-bottom:32px;
-    }
-
-    .book-open{
-      border:0;
-      border-bottom:1px solid var(--red);
-      background:transparent;
-      color:var(--navy);
+    .chapter{
+      font-size:.74rem;
+      letter-spacing:.18em;
+      text-transform:uppercase;
       font-weight:700;
-      letter-spacing:.08em;
-      padding:0 0 7px;
-      cursor:pointer;
+      color:var(--blue-mid);
+      display:none;
     }
 
     .book-letter{
       font-family:"Playfair Display",Georgia,serif;
-      font-size:6rem;
-      color:var(--blue-mid);
+      font-size:3.6rem;
+      color:var(--red);
       line-height:.85;
-      margin:24px 0 18px;
+      margin:0 0 8px;
+    }
+
+    .mila-rule{
+      display:block;
+      width:28px;
+      height:2px;
+      background:var(--red);
+      margin:14px 0;
     }
 
     .page-face h4{
       font-family:"Playfair Display",Georgia,serif;
-      font-size:2.3rem;
-      line-height:1.02;
+      font-size:1.6rem;
+      line-height:1.05;
       color:var(--navy);
-      margin-bottom:16px;
-      letter-spacing:-.03em;
+      letter-spacing:-.02em;
     }
 
     .page-face p{
       color:var(--muted);
-      max-width:480px;
-      font-size:.98rem;
-    }
-
-    .page-face blockquote{
-      margin:12px 0 0;
-      padding:18px 0 0 18px;
-      border-left:2px solid var(--red);
-      font-family:"Playfair Display",Georgia,serif;
-      font-style:italic;
-      color:#536174;
-      font-size:1.08rem;
-      max-width:470px;
-    }
-
-    .book-nav{
-      position:absolute;
-      left:34px;
-      right:34px;
-      bottom:20px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      z-index:10;
-    }
-
-    .book-nav > button{
-      width:40px;
-      height:40px;
-      border:1px solid #D4CDC1;
-      background:#fff;
-      border-radius:50%;
-      color:var(--navy);
-      cursor:pointer;
-      font-weight:700;
-    }
-
-    .book-dots{
-      display:flex;
-      gap:7px;
-    }
-
-    .book-dot{
-      width:8px;
-      height:8px;
-      border:0;
-      border-radius:50%;
-      background:#C7C0B4;
-      cursor:pointer;
-      padding:0;
-    }
-
-    .book-dot.active{
-      background:var(--red);
-      transform:scale(1.2);
+      font-size:.95rem;
     }
 
     .products {
@@ -2394,6 +2243,7 @@
         padding:40px 26px 60px;
       }
       .chapter{
+        display:inline-block;
         font-size:.7rem;
       }
       .book-letter{
@@ -2426,15 +2276,22 @@
       .book-nav{ display:none; }
 
       .flip-stage{
+        display:block;
         min-height:unset;
+        border-radius:0;
+        box-shadow:none;
+        overflow:visible;
       }
 
       .flip-sheet{
+        display:block;
+        width:100%;
         position:static;
         opacity:1;
         transform:none;
         pointer-events:auto;
         margin-bottom:18px;
+        border-right:0;
         transition:none;
       }
 
@@ -2464,9 +2321,12 @@
       .heart-grid,
       .faq-grid,
       .primary-products,
-      .mini-grid {
+      .mini-grid,
+      .mila-layout {
         grid-template-columns:1fr;
       }
+      .mila-layout { gap:36px; }
+      .mila-head { max-width:none; }
       .statement p { max-width:650px; }
       .experience-stack { grid-template-columns:1fr; }
       .experience-photo,
@@ -4341,90 +4201,59 @@
   </section>
 
       <div class="mila-section" id="metodo">
-        <div class="mila-head">
-          <div class="eyebrow" style="color:var(--red);margin-bottom:14px;">Método MILA</div>
-          <h3>Um caminho claro para você usar o inglês <em>de verdade.</em></h3>
-          <p>O MILA conecta o aprendizado à sua rotina e a situações reais, para transformar conhecimento em confiança, prática e comunicação. Abra o livro e navegue pelas quatro etapas.</p>
-        </div>
-
-        <div class="mila-book" id="milaBook">
-          <div class="book-shell">
-            <div class="book-spine"></div>
-
-            <div class="book-page book-left">
-              <div class="book-left-inner">
-                <span class="book-small">MÉTODO</span>
-                <div class="book-title">MILA</div>
-                <p>Inglês não é estudo.<br><em>Inglês é treino.</em></p>
-                <div class="book-progress">
-                  <span id="bookProgress">Capa</span>
-                </div>
-              </div>
+        <div class="container mila-layout">
+          <div class="mila-head">
+            <div class="eyebrow" style="color:var(--red);margin-bottom:14px;">Método MILA</div>
+            <h3>Um caminho claro para você usar o inglês <em>de verdade.</em></h3>
+            <p>O método MILA conecta o aprendizado à sua rotina e situações reais, para transformar <strong>conhecimento em confiança, prática e comunicação.</strong></p>
+            <div class="mila-cta">
+              <a href="https://wa.me/5544988271830?text=Ol%C3%A1%21%20Quero%20conhecer%20o%20m%C3%A9todo%20MILA." target="_blank" rel="noopener noreferrer" class="button button-primary">Conheça o método MILA <span aria-hidden="true">→</span></a>
             </div>
+          </div>
 
-            <div class="book-page book-right">
-              <div class="flip-stage">
-                <div class="flip-sheet active" data-book-page="0">
-                  <div class="page-face cover-face">
-                    <span class="chapter">WE BILINGUAL</span>
-                    <h4>MILA</h4>
-                    <p>Mentalidade · Imersão · Lógica · Ativação</p>
-                    <button class="book-open" type="button" data-next-book>ABRIR O MÉTODO →</button>
-                  </div>
-                </div>
-
-                <div class="flip-sheet" data-book-page="1">
-                  <div class="page-face has-bg"><div class="page-face-bg" style="background-image:url('https://images.unsplash.com/photo-1506324587841-69c8c9aaa05c?auto=format&amp;fit=crop&amp;w=1200&amp;q=70')"></div>
-                    <span class="chapter">01 — MENTALIDADE</span>
-                    <div class="book-letter">M</div>
-                    <h4>Destravar começa antes da fala.</h4>
-                    <p>Antes de vocabulário ou gramática, trabalhamos os bloqueios que fazem o aluno se esconder do inglês.</p>
-                    <blockquote>Confiança não aparece antes da prática. Ela é construída quando você escolhe se arriscar.</blockquote>
-                  </div>
-                </div>
-
-                <div class="flip-sheet" data-book-page="2">
-                  <div class="page-face has-bg"><div class="page-face-bg" style="background-image:url('https://images.unsplash.com/photo-1604881991405-b273c7a4386a?auto=format&amp;fit=crop&amp;w=1200&amp;q=70')"></div>
-                    <span class="chapter">02 — IMERSÃO</span>
-                    <div class="book-letter">I</div>
-                    <h4>O inglês precisa entrar na vida real.</h4>
-                    <p>Diálogos, vocabulário, situações e experiências que aproximam o idioma da rotina, carreira, viagens e objetivos do aluno.</p>
-                    <blockquote>Quanto mais o inglês encontra a sua realidade, mais natural fica usá-lo.</blockquote>
-                  </div>
-                </div>
-
-                <div class="flip-sheet" data-book-page="3">
-                  <div class="page-face has-bg"><div class="page-face-bg" style="background-image:url('https://images.unsplash.com/photo-1502979932800-33d311b7ce56?auto=format&amp;fit=crop&amp;w=1200&amp;q=70')"></div>
-                    <span class="chapter">03 — LÓGICA</span>
-                    <div class="book-letter">L</div>
-                    <h4>Entender é melhor do que decorar.</h4>
-                    <p>A gramática aparece como uma estrutura prática. O aluno entende o raciocínio da língua e deixa de depender de regras soltas.</p>
-                    <blockquote>Quando a lógica faz sentido, o inglês deixa de parecer um quebra-cabeça.</blockquote>
-                  </div>
-                </div>
-
-                <div class="flip-sheet" data-book-page="4">
-                  <div class="page-face has-bg"><div class="page-face-bg" style="background-image:url('https://images.unsplash.com/photo-1781301581395-d6a5bc6a7939?auto=format&amp;fit=crop&amp;w=1200&amp;q=70')"></div>
-                    <span class="chapter">04 — ATIVAÇÃO</span>
-                    <div class="book-letter">A</div>
-                    <h4>Conhecimento precisa virar uso.</h4>
-                    <p>Aulas, prática complementar e ALYX fazem o idioma continuar em movimento para que o aluno fale, teste e avance.</p>
-                    <blockquote>O inglês só ganha força quando sai da cabeça e entra em ação.</blockquote>
-                  </div>
+          <div class="mila-book" id="milaBook">
+            <div class="flip-stage">
+              <div class="flip-sheet" data-book-page="1">
+                <div class="page-face has-bg"><div class="page-face-bg" style="background-image:url('https://images.unsplash.com/photo-1506324587841-69c8c9aaa05c?auto=format&amp;fit=crop&amp;w=1200&amp;q=70')"></div>
+                  <span class="chapter">01 — MENTALIDADE</span>
+                  <div class="book-letter">M</div>
+                  <h4>Mentalidade</h4>
+                  <span class="mila-rule"></span>
+                  <p>Confiança para se comunicar de verdade.</p>
                 </div>
               </div>
 
-              <div class="book-nav">
-                <button type="button" id="bookPrev">←</button>
-                <div class="book-dots" id="bookDots"></div>
-                <button type="button" id="bookNext">→</button>
+              <div class="flip-sheet" data-book-page="2">
+                <div class="page-face has-bg"><div class="page-face-bg" style="background-image:url('mila-imersao.jpg')"></div>
+                  <span class="chapter">02 — IMERSÃO</span>
+                  <div class="book-letter">I</div>
+                  <h4>Imersão</h4>
+                  <span class="mila-rule"></span>
+                  <p>Contato constante com o inglês no seu dia a dia.</p>
+                </div>
+              </div>
+
+              <div class="flip-sheet" data-book-page="3">
+                <div class="page-face has-bg"><div class="page-face-bg" style="background-image:url('https://images.unsplash.com/photo-1502979932800-33d311b7ce56?auto=format&amp;fit=crop&amp;w=1200&amp;q=70')"></div>
+                  <span class="chapter">03 — LÓGICA</span>
+                  <div class="book-letter">L</div>
+                  <h4>Lógica</h4>
+                  <span class="mila-rule"></span>
+                  <p>Entender o idioma de forma simples e prática.</p>
+                </div>
+              </div>
+
+              <div class="flip-sheet" data-book-page="4">
+                <div class="page-face has-bg"><div class="page-face-bg" style="background-image:url('https://images.unsplash.com/photo-1781301581395-d6a5bc6a7939?auto=format&amp;fit=crop&amp;w=1200&amp;q=70')"></div>
+                  <span class="chapter">04 — ATIVAÇÃO</span>
+                  <div class="book-letter">A</div>
+                  <h4>Ativação</h4>
+                  <span class="mila-rule"></span>
+                  <p>Transformar o inglês em uso real.</p>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-
-        <div class="mila-cta">
-          <a href="https://wa.me/5544988271830?text=Ol%C3%A1%21%20Quero%20transformar%20meu%20ingl%C3%AAs%20em%20pr%C3%A1tica%20com%20o%20m%C3%A9todo%20MILA." target="_blank" rel="noopener noreferrer" class="button button-primary">Quero transformar meu inglês em prática</a>
         </div>
       </div>
 
@@ -4963,73 +4792,49 @@
       });
     }
 
-    const bookPages = [...document.querySelectorAll(".flip-sheet")];
-    const bookPrev = document.getElementById("bookPrev");
-    const bookNext = document.getElementById("bookNext");
-    const bookDots = document.getElementById("bookDots");
-    const bookProgress = document.getElementById("bookProgress");
-    let bookCurrent = 0;
+    const milaBookEl = document.getElementById("milaBook");
+    const milaPanels = milaBookEl ? [...milaBookEl.querySelectorAll(".flip-sheet")] : [];
 
-    const bookLabels = ["Capa","M — Mentalidade","I — Imersão","L — Lógica","A — Ativação"];
+    if (milaBookEl && milaPanels.length && "IntersectionObserver" in window) {
+      if (window.matchMedia("(min-width: 981px)").matches) {
+        // Desktop: the 4 panels sit side by side and fan open (staggered via
+        // CSS transition-delay) the first time the section scrolls into view.
+        const milaFanObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              milaBookEl.classList.add("is-open");
+              milaFanObserver.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.25 });
 
-    bookPages.forEach((_, i) => {
-      const dot = document.createElement("button");
-      dot.type = "button";
-      dot.className = "book-dot" + (i === 0 ? " active" : "");
-      dot.setAttribute("aria-label", "Ir para página " + (i + 1));
-      dot.addEventListener("click", () => showBookPage(i));
-      bookDots.appendChild(dot);
-    });
+        milaFanObserver.observe(milaBookEl);
 
-    const dots = [...document.querySelectorAll(".book-dot")];
+        setTimeout(() => {
+          milaBookEl.classList.add("is-open");
+          milaFanObserver.disconnect();
+        }, 2000);
+      } else {
+        // Mobile: panels stack vertically and reveal one at a time as the
+        // user scrolls past each one.
+        milaPanels.forEach(step => step.classList.add("mila-step-reveal"));
 
-    function showBookPage(index) {
-      if (index < 0) index = 0;
-      if (index >= bookPages.length) index = bookPages.length - 1;
-      if (index === bookCurrent) return;
+        const milaObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              milaObserver.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.2, rootMargin: "0px 0px -60px 0px" });
 
-      const outgoing = bookPages[bookCurrent];
-      outgoing.classList.add("turning-out");
+        milaPanels.forEach(step => milaObserver.observe(step));
 
-      setTimeout(() => {
-        bookPages.forEach((page, i) => {
-          page.classList.toggle("active", i === index);
-          page.classList.remove("turning-out");
-        });
-        dots.forEach((dot, i) => dot.classList.toggle("active", i === index));
-        bookCurrent = index;
-        bookProgress.textContent = bookLabels[index];
-      }, 180);
-    }
-
-    bookPrev.addEventListener("click", () => showBookPage(bookCurrent - 1));
-    bookNext.addEventListener("click", () => showBookPage(bookCurrent + 1));
-
-    document.querySelectorAll("[data-next-book]").forEach(btn => {
-      btn.addEventListener("click", () => showBookPage(1));
-    });
-
-    if (window.matchMedia("(max-width: 980px)").matches && "IntersectionObserver" in window) {
-      const milaSteps = bookPages.filter(page => page.dataset.bookPage !== "0");
-      milaSteps.forEach(step => step.classList.add("mila-step-reveal"));
-
-      const milaObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-            milaObserver.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.2, rootMargin: "0px 0px -60px 0px" });
-
-      milaSteps.forEach(step => milaObserver.observe(step));
-
-      // Safety net: guarantee every step becomes visible even if the
-      // browser never reports intersection (so the step is never stuck hidden).
-      setTimeout(() => {
-        milaSteps.forEach(step => step.classList.add("is-visible"));
-        milaObserver.disconnect();
-      }, 2500);
+        setTimeout(() => {
+          milaPanels.forEach(step => step.classList.add("is-visible"));
+          milaObserver.disconnect();
+        }, 2500);
+      }
     }
 
     const alyxTrack = document.getElementById("alyxTrack");
