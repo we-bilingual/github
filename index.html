@@ -85,8 +85,8 @@
 
     .hero {
       min-height:100vh;
-      background:var(--navy);
-      color:#fff;
+      background:linear-gradient(155deg, #FFFFFF 0%, #FFFFFF 45%, var(--off) 100%);
+      color:var(--navy);
       padding:118px 0 70px;
       position:relative;
       overflow:hidden;
@@ -96,7 +96,7 @@
     .hero::after {
       content:"";
       position:absolute;
-      border:1px solid rgba(200,217,238,.10);
+      border:1px solid rgba(15,35,64,.08);
       border-radius:50%;
       pointer-events:none;
     }
@@ -123,7 +123,7 @@
     }
 
     .nav-note {
-      color:var(--blue-light);
+      color:var(--muted);
       text-transform:uppercase;
       letter-spacing:.12em;
       font-size:.76rem;
@@ -141,7 +141,7 @@
     }
 
     .nav-links a{
-      color:#fff;
+      color:var(--navy);
       font-size:.86rem;
       font-weight:600;
       opacity:.82;
@@ -163,8 +163,8 @@
       gap:5px;
       width:40px;
       height:40px;
-      background:rgba(255,255,255,.08);
-      border:1px solid rgba(255,255,255,.18);
+      background:rgba(15,35,64,.05);
+      border:1px solid rgba(15,35,64,.16);
       border-radius:10px;
       cursor:pointer;
     }
@@ -173,7 +173,7 @@
       display:block;
       width:18px;
       height:2px;
-      background:#fff;
+      background:var(--navy);
       transition:.2s ease;
     }
 
@@ -198,7 +198,7 @@
       align-items:center;
     }
 
-    .hero-copy .eyebrow { color:var(--blue-light); margin-bottom:24px; }
+    .hero-copy .eyebrow { color:var(--red); margin-bottom:24px; }
 
     .hero-copy h1 {
       font-family:"Playfair Display", Georgia, serif;
@@ -207,13 +207,14 @@
       margin-bottom:28px;
       max-width:820px;
       letter-spacing:-.03em;
+      color:var(--navy);
     }
 
-    .hero-copy h1 em { font-style:italic; font-weight:500; }
+    .hero-copy h1 em { font-style:italic; font-weight:500; color:var(--red); }
     .hero-copy h1 .hero-hl { color:var(--red); }
 
         .hero-copy p {
-      color:var(--blue-light);
+      color:var(--muted);
       font-size:1.1rem;
       max-width:680px;
       margin-bottom:28px;
@@ -227,8 +228,9 @@
     }
 
     .hero-meta span {
-      border:1px solid rgba(255,255,255,.16);
-      color:#fff;
+      border:1px solid var(--line);
+      background:#fff;
+      color:var(--navy);
       padding:9px 13px;
       border-radius:999px;
       font-size:.84rem;
@@ -251,6 +253,16 @@
       min-height:420px;
       object-fit:cover;
       display:block;
+    }
+
+    .hero-visual::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(200deg, rgba(15,35,64,.5) 0%, rgba(15,35,64,0) 32%),
+        linear-gradient(0deg, rgba(15,35,64,.55) 0%, rgba(15,35,64,0) 38%);
+      pointer-events:none;
     }
 
     .hero-visual-note{
@@ -417,31 +429,32 @@
 
     .persona-thumbs{
       display:flex;
-      gap:14px;
-      margin-top:28px;
+      gap:18px;
+      margin-top:32px;
     }
 
     .persona-thumbs figure{
       margin:0;
       flex:1 1 0;
-      max-width:140px;
+      max-width:168px;
     }
 
     .persona-thumbs img{
       width:100%;
       aspect-ratio:4/3;
       object-fit:cover;
-      border-radius:14px;
+      border-radius:16px;
       display:block;
+      box-shadow:0 14px 30px rgba(15,35,64,.12);
     }
 
     .persona-thumbs figcaption{
-      margin-top:8px;
+      margin-top:10px;
       font-size:.72rem;
       font-weight:700;
-      letter-spacing:.06em;
+      letter-spacing:.08em;
       text-transform:uppercase;
-      color:var(--muted);
+      color:var(--navy);
     }
 
     .experience-stack {
@@ -4261,11 +4274,11 @@
           <span>Plano personalizado</span>
         </div>
 
-        <a href="https://wa.me/5544988271830?text=Ol%C3%A1%21%20Quero%20entender%20meu%20pr%C3%B3ximo%20passo." target="_blank" rel="noopener noreferrer" class="button button-primary hero-cta">Quero entender meu próximo passo</a>
+        <a href="https://wa.me/5544988271830?text=Ol%C3%A1%21%20Quero%20destravar%20meu%20ingl%C3%AAs." target="_blank" rel="noopener noreferrer" class="button button-primary hero-cta">Quero destravar meu inglês</a>
       </section>
 
       <aside class="hero-visual">
-        <img src="https://images.unsplash.com/photo-1765648684555-de2d0f6af467?auto=format&amp;fit=crop&amp;w=1000&amp;q=80" alt="Mulher sorrindo, profissional, usando o notebook">
+        <img src="https://images.unsplash.com/photo-1729371568794-fb9c66ab09cf?auto=format&amp;fit=crop&amp;w=1000&amp;q=80" alt="Mulher e homem sorrindo durante uma conversa profissional, com notebook na mesa">
         <div class="hero-visual-note">inglês<br>para a sua<br><em>vida real.</em></div>
         <ul class="hero-context-list">
           <li>Trabalho</li>
@@ -4277,13 +4290,6 @@
       </aside>
     </div>
   </main>
-
-  <section class="statement">
-    <div class="container statement-inner">
-      <h2>Your English should <em>open doors.</em></h2>
-      <p>A reunião internacional, a viagem de negócios, a conversa que decide uma parceria — o inglês precisa estar à altura dos momentos que já fazem parte da sua vida.</p>
-    </div>
-  </section>
 
   <section class="heart" id="persona">
     <div class="container">
@@ -4298,15 +4304,15 @@
 
           <div class="persona-thumbs">
             <figure>
-              <img src="https://images.unsplash.com/photo-1765648684555-de2d0f6af467?auto=format&amp;fit=crop&amp;w=300&amp;q=70" alt="">
+              <img src="https://images.unsplash.com/photo-1758874384556-cc2b9dcbb6e0?auto=format&amp;fit=crop&amp;w=400&amp;q=75" alt="Mulher sorrindo, trabalhando no notebook">
               <figcaption>Trabalho</figcaption>
             </figure>
             <figure>
-              <img src="https://images.unsplash.com/photo-1604881991405-b273c7a4386a?auto=format&amp;fit=crop&amp;w=300&amp;q=70" alt="">
+              <img src="https://images.unsplash.com/photo-1764173038859-11b5bcf26d0f?auto=format&amp;fit=crop&amp;w=400&amp;q=75" alt="Duas pessoas conversando em uma mesa de café">
               <figcaption>Conversas</figcaption>
             </figure>
             <figure>
-              <img src="https://images.unsplash.com/photo-1778101458249-e2ebbbfe31b8?auto=format&amp;fit=crop&amp;w=300&amp;q=70" alt="">
+              <img src="https://images.unsplash.com/photo-1758599543114-248f7211fddd?auto=format&amp;fit=crop&amp;w=400&amp;q=75" alt="Duas pessoas caminhando e conversando ao ar livre">
               <figcaption>Rotina</figcaption>
             </figure>
           </div>
