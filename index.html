@@ -3827,6 +3827,65 @@
         justify-content:center;
       }
     }
+
+    /* Persona + dor fold — rebalance left/right and lighten the right card (see latest brief) */
+    .heart-grid{
+      align-items:center !important;
+    }
+
+    .dor-panel{
+      padding:30px 32px !important;
+      box-shadow:0 16px 40px rgba(15,35,64,.08) !important;
+    }
+
+    .dor-tag{
+      display:block;
+      background:none;
+      padding:0;
+      border-radius:0;
+      color:var(--red);
+      font-size:.78rem;
+      font-weight:700;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      margin-bottom:14px;
+    }
+
+    .dor-panel h3{
+      font-size:1.4rem !important;
+      line-height:1.25 !important;
+      margin-bottom:18px !important;
+    }
+
+    .dor-panel .pain-list{
+      gap:11px;
+      margin-bottom:22px !important;
+    }
+
+    .dor-panel .pain-list li{
+      font-size:.96rem;
+      line-height:1.45;
+    }
+
+    .dor-closing{
+      font-family:"DM Sans", sans-serif !important;
+      font-style:normal !important;
+      font-size:.88rem !important;
+      line-height:1.5 !important;
+      color:var(--muted) !important;
+      padding-top:16px;
+      border-top:1px solid var(--line);
+      margin:0 0 20px !important;
+    }
+
+    @media (max-width: 980px) {
+      .dor-panel{
+        padding:28px 26px !important;
+      }
+      .dor-panel h3{
+        font-size:1.3rem !important;
+      }
+    }
 </style>
 </head>
 <body>
@@ -3900,24 +3959,24 @@
       <div class="heart-grid">
         <div class="heart-copy">
           <div class="eyebrow">Para quem já está em movimento</div>
-          <h2>O inglês precisa entrar <em>na vida que você já tem.</em></h2>
+          <h2>O inglês precisa fazer parte <em>da vida que você já tem.</em></h2>
 
           <p>
-            Na sua rotina, no seu trabalho e nas conversas que já fazem parte do seu dia a dia.
+            No seu trabalho, na sua rotina e nas conversas que já fazem parte do seu dia a dia.
           </p>
         </div>
 
         <div class="dor-panel">
           <div class="dor-tag">Isso te parece familiar?</div>
-          <h3>Você já estudou inglês antes, mas ainda trava na hora de falar?</h3>
+          <h3>Você já estudou inglês, mas ainda trava na hora de falar?</h3>
 
           <ul class="pain-list">
-            <li>Entende muito mais do que consegue falar.</li>
+            <li>Entende mais do que consegue falar.</li>
             <li>Sabe o que quer dizer, mas trava na hora de se comunicar.</li>
-            <li>Não quer começar tudo de novo em um modelo de inglês que não conversa com a sua realidade.</li>
+            <li>Não quer voltar para um inglês genérico, que não conversa com a sua realidade.</li>
           </ul>
 
-          <p class="dor-closing">Você não precisa começar de novo. Precisa transformar o que já sabe em uso real.</p>
+          <p class="dor-closing">Você não precisa começar de novo.<br>Precisa transformar o que já sabe em uso real.</p>
 
           <a href="#inicio" class="button button-primary">Quero destravar meu inglês</a>
         </div>
