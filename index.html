@@ -588,6 +588,23 @@
 
     .mila-section { padding:70px 0 100px; }
 
+    .mila-scroll{
+      position:relative;
+      height:320vh;
+    }
+
+    .mila-sticky{
+      position:sticky;
+      top:0;
+      min-height:86vh;
+      display:flex;
+      align-items:center;
+      overflow:hidden;
+    }
+
+    .mila-scroll.mila-static{ height:auto; }
+    .mila-scroll.mila-static .mila-sticky{ position:static; min-height:auto; overflow:visible; }
+
     .mila-layout{
       display:grid;
       grid-template-columns:.62fr 1.38fr;
@@ -1222,7 +1239,7 @@
       line-height:1.4;
     }
 
-    .mila-book{}
+    .mila-book{ width:100%; }
 
     .flip-stage{
       display:flex;
@@ -1230,30 +1247,38 @@
       box-shadow:0 28px 70px rgba(15,35,64,.14);
       overflow:hidden;
       min-height:480px;
+      perspective:2000px;
     }
 
     .flip-sheet{
       position:relative;
       flex:1 1 0%;
-      opacity:0;
-      transform:translateX(-18px);
-      transition:opacity .7s ease, transform .7s cubic-bezier(.2,.75,.25,1);
       background:#FCFBF6;
+      transform-origin:left center;
+      transform:rotateY(-90deg);
+      opacity:.4;
+      backface-visibility:hidden;
+      will-change:transform, opacity;
     }
 
     .flip-sheet:not(:last-child){
       border-right:1px solid rgba(15,35,64,.08);
     }
 
-    #milaBook.is-open .flip-sheet{
+    .flip-sheet:not(:first-child)::before{
+      content:"";
+      position:absolute;
+      top:0; bottom:0; left:0;
+      width:40px;
+      background:linear-gradient(90deg, rgba(15,35,64,.22), rgba(15,35,64,0));
+      z-index:4;
+      pointer-events:none;
+    }
+
+    .mila-scroll.mila-static .flip-sheet{
       opacity:1;
       transform:none;
     }
-
-    #milaBook.is-open .flip-sheet:nth-child(1){ transition-delay:0s; }
-    #milaBook.is-open .flip-sheet:nth-child(2){ transition-delay:.12s; }
-    #milaBook.is-open .flip-sheet:nth-child(3){ transition-delay:.24s; }
-    #milaBook.is-open .flip-sheet:nth-child(4){ transition-delay:.36s; }
 
     .page-face{
       height:100%;
@@ -1274,7 +1299,7 @@
       inset:0;
       background-size:cover;
       background-position:center;
-      filter:saturate(.45) brightness(1.1) contrast(.95);
+      filter:saturate(.28) brightness(1.14) contrast(.92);
       z-index:-2;
     }
 
@@ -1282,7 +1307,7 @@
       content:"";
       position:absolute;
       inset:0;
-      background:linear-gradient(135deg, rgba(252,251,246,.86) 0%, rgba(252,251,246,.64) 100%);
+      background:linear-gradient(135deg, rgba(252,251,246,.92) 0%, rgba(252,251,246,.76) 100%);
       z-index:-1;
     }
 
@@ -2295,6 +2320,10 @@
         transition:none;
       }
 
+      .flip-sheet::before{
+        display:none;
+      }
+
       .flip-sheet[data-book-page="0"]{
         display:none;
       }
@@ -2327,6 +2356,8 @@
       }
       .mila-layout { gap:36px; }
       .mila-head { max-width:none; }
+      .mila-scroll{ height:auto !important; }
+      .mila-sticky{ position:static !important; min-height:auto !important; overflow:visible !important; }
       .statement p { max-width:650px; }
       .experience-stack { grid-template-columns:1fr; }
       .experience-photo,
@@ -4201,55 +4232,59 @@
   </section>
 
       <div class="mila-section" id="metodo">
-        <div class="container mila-layout">
-          <div class="mila-head">
-            <div class="eyebrow" style="color:var(--red);margin-bottom:14px;">Método MILA</div>
-            <h3>Um caminho claro para você usar o inglês <em>de verdade.</em></h3>
-            <p>O método MILA conecta o aprendizado à sua rotina e situações reais, para transformar <strong>conhecimento em confiança, prática e comunicação.</strong></p>
-            <div class="mila-cta">
-              <a href="https://wa.me/5544988271830?text=Ol%C3%A1%21%20Quero%20conhecer%20o%20m%C3%A9todo%20MILA." target="_blank" rel="noopener noreferrer" class="button button-primary">Conheça o método MILA <span aria-hidden="true">→</span></a>
-            </div>
-          </div>
-
-          <div class="mila-book" id="milaBook">
-            <div class="flip-stage">
-              <div class="flip-sheet" data-book-page="1">
-                <div class="page-face has-bg"><div class="page-face-bg" style="background-image:url('https://images.unsplash.com/photo-1506324587841-69c8c9aaa05c?auto=format&amp;fit=crop&amp;w=1200&amp;q=70')"></div>
-                  <span class="chapter">01 — MENTALIDADE</span>
-                  <div class="book-letter">M</div>
-                  <h4>Mentalidade</h4>
-                  <span class="mila-rule"></span>
-                  <p>Confiança para se comunicar de verdade.</p>
+        <div class="mila-scroll" id="milaScroll">
+          <div class="mila-sticky">
+            <div class="container mila-layout">
+              <div class="mila-head">
+                <div class="eyebrow" style="color:var(--red);margin-bottom:14px;">Método MILA</div>
+                <h3>Um caminho claro para você usar o inglês <em>de verdade.</em></h3>
+                <p>O método MILA conecta o aprendizado à sua rotina e situações reais, para transformar <strong>conhecimento em confiança, prática e comunicação.</strong></p>
+                <div class="mila-cta">
+                  <a href="https://wa.me/5544988271830?text=Ol%C3%A1%21%20Quero%20conhecer%20o%20m%C3%A9todo%20MILA." target="_blank" rel="noopener noreferrer" class="button button-primary">Conheça o método MILA <span aria-hidden="true">→</span></a>
                 </div>
               </div>
 
-              <div class="flip-sheet" data-book-page="2">
-                <div class="page-face has-bg"><div class="page-face-bg" style="background-image:url('mila-imersao.jpg')"></div>
-                  <span class="chapter">02 — IMERSÃO</span>
-                  <div class="book-letter">I</div>
-                  <h4>Imersão</h4>
-                  <span class="mila-rule"></span>
-                  <p>Contato constante com o inglês no seu dia a dia.</p>
-                </div>
-              </div>
+              <div class="mila-book" id="milaBook">
+                <div class="flip-stage">
+                  <div class="flip-sheet" data-book-page="1">
+                    <div class="page-face has-bg"><div class="page-face-bg" style="background-image:url('https://images.unsplash.com/photo-1506324587841-69c8c9aaa05c?auto=format&amp;fit=crop&amp;w=1200&amp;q=70')"></div>
+                      <span class="chapter">01 — MENTALIDADE</span>
+                      <div class="book-letter">M</div>
+                      <h4>Mentalidade</h4>
+                      <span class="mila-rule"></span>
+                      <p>Confiança para se comunicar de verdade.</p>
+                    </div>
+                  </div>
 
-              <div class="flip-sheet" data-book-page="3">
-                <div class="page-face has-bg"><div class="page-face-bg" style="background-image:url('https://images.unsplash.com/photo-1502979932800-33d311b7ce56?auto=format&amp;fit=crop&amp;w=1200&amp;q=70')"></div>
-                  <span class="chapter">03 — LÓGICA</span>
-                  <div class="book-letter">L</div>
-                  <h4>Lógica</h4>
-                  <span class="mila-rule"></span>
-                  <p>Entender o idioma de forma simples e prática.</p>
-                </div>
-              </div>
+                  <div class="flip-sheet" data-book-page="2">
+                    <div class="page-face has-bg"><div class="page-face-bg" style="background-image:url('mila-imersao.jpg')"></div>
+                      <span class="chapter">02 — IMERSÃO</span>
+                      <div class="book-letter">I</div>
+                      <h4>Imersão</h4>
+                      <span class="mila-rule"></span>
+                      <p>Contato constante com o inglês no seu dia a dia.</p>
+                    </div>
+                  </div>
 
-              <div class="flip-sheet" data-book-page="4">
-                <div class="page-face has-bg"><div class="page-face-bg" style="background-image:url('https://images.unsplash.com/photo-1781301581395-d6a5bc6a7939?auto=format&amp;fit=crop&amp;w=1200&amp;q=70')"></div>
-                  <span class="chapter">04 — ATIVAÇÃO</span>
-                  <div class="book-letter">A</div>
-                  <h4>Ativação</h4>
-                  <span class="mila-rule"></span>
-                  <p>Transformar o inglês em uso real.</p>
+                  <div class="flip-sheet" data-book-page="3">
+                    <div class="page-face has-bg"><div class="page-face-bg" style="background-image:url('https://images.unsplash.com/photo-1502979932800-33d311b7ce56?auto=format&amp;fit=crop&amp;w=1200&amp;q=70')"></div>
+                      <span class="chapter">03 — LÓGICA</span>
+                      <div class="book-letter">L</div>
+                      <h4>Lógica</h4>
+                      <span class="mila-rule"></span>
+                      <p>Entender o idioma de forma simples e prática.</p>
+                    </div>
+                  </div>
+
+                  <div class="flip-sheet" data-book-page="4">
+                    <div class="page-face has-bg"><div class="page-face-bg" style="background-image:url('https://images.unsplash.com/photo-1781301581395-d6a5bc6a7939?auto=format&amp;fit=crop&amp;w=1200&amp;q=70')"></div>
+                      <span class="chapter">04 — ATIVAÇÃO</span>
+                      <div class="book-letter">A</div>
+                      <h4>Ativação</h4>
+                      <span class="mila-rule"></span>
+                      <p>Transformar o inglês em uso real.</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -4792,31 +4827,56 @@
       });
     }
 
+    const milaScrollEl = document.getElementById("milaScroll");
+    const milaStickyEl = milaScrollEl ? milaScrollEl.querySelector(".mila-sticky") : null;
     const milaBookEl = document.getElementById("milaBook");
     const milaPanels = milaBookEl ? [...milaBookEl.querySelectorAll(".flip-sheet")] : [];
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    if (milaBookEl && milaPanels.length && "IntersectionObserver" in window) {
-      if (window.matchMedia("(min-width: 981px)").matches) {
-        // Desktop: the 4 panels sit side by side and fan open (staggered via
-        // CSS transition-delay) the first time the section scrolls into view.
-        const milaFanObserver = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              milaBookEl.classList.add("is-open");
-              milaFanObserver.unobserve(entry.target);
-            }
+    if (milaScrollEl && milaStickyEl && milaPanels.length) {
+      const isMilaDesktop = window.matchMedia("(min-width: 981px)").matches;
+
+      if (isMilaDesktop && prefersReducedMotion) {
+        // Reduced motion: skip the scroll-jacked fold entirely, show it open.
+        milaScrollEl.classList.add("mila-static");
+      } else if (isMilaDesktop) {
+        // Desktop: the booklet starts closed (each page rotated -90deg on its
+        // left hinge) and unfolds page by page, tied directly to how far the
+        // user has scrolled through the pinned .mila-scroll spacer — not a
+        // one-shot reveal, but a continuous fold driven by scroll position.
+        let milaTicking = false;
+
+        function updateMilaFold() {
+          const total = milaScrollEl.offsetHeight - milaStickyEl.offsetHeight;
+          const scrolled = -milaScrollEl.getBoundingClientRect().top;
+          let progress = total > 0 ? scrolled / total : 0;
+          progress = Math.min(1, Math.max(0, progress));
+
+          milaPanels.forEach((panel, i) => {
+            const start = i / milaPanels.length;
+            const end = (i + 1) / milaPanels.length;
+            let local = (progress - start) / (end - start);
+            local = Math.min(1, Math.max(0, local));
+            panel.style.transform = "rotateY(" + (-90 + local * 90) + "deg)";
+            panel.style.opacity = String(0.4 + local * 0.6);
           });
-        }, { threshold: 0.25 });
 
-        milaFanObserver.observe(milaBookEl);
+          milaTicking = false;
+        }
 
-        setTimeout(() => {
-          milaBookEl.classList.add("is-open");
-          milaFanObserver.disconnect();
-        }, 2000);
-      } else {
+        function onMilaScroll() {
+          if (!milaTicking) {
+            milaTicking = true;
+            requestAnimationFrame(updateMilaFold);
+          }
+        }
+
+        window.addEventListener("scroll", onMilaScroll, { passive: true });
+        window.addEventListener("resize", onMilaScroll);
+        updateMilaFold();
+      } else if ("IntersectionObserver" in window) {
         // Mobile: panels stack vertically and reveal one at a time as the
-        // user scrolls past each one.
+        // user scrolls past each one (unchanged from before).
         milaPanels.forEach(step => step.classList.add("mila-step-reveal"));
 
         const milaObserver = new IntersectionObserver((entries) => {
