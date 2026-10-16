@@ -4881,15 +4881,23 @@
         // left hinge) and unfolds page by page, tied directly to how far the
         // user has scrolled through the pinned .mila-scroll spacer — not a
         // one-shot reveal, but a continuous fold driven by scroll position.
-        let milaTicking = false;
+        //
+        // This is driven by a running requestAnimationFrame loop (sampling
+        // scroll position every frame) instead of a "scroll" event listener,
+        // because relying only on the scroll event left the fold permanently
+        // stuck closed for some real users — a rAF loop can't miss an update.
         // Pages never lie perfectly flat — each settles at a slight resting
         // angle so the open booklet keeps a visible fold/fan, not 4 flat slabs.
         const milaRestAngles = [-9, -3, 3, 9];
+        let milaRafId = null;
 
-        function updateMilaFold() {
+        function paintMilaFold() {
           const total = milaScrollEl.offsetHeight - milaStickyEl.offsetHeight;
           const scrolled = -milaScrollEl.getBoundingClientRect().top;
-          let progress = total > 0 ? scrolled / total : 0;
+          // If the math ever degenerates (e.g. an unusually tall sticky
+          // column leaves no real scroll runway), fail OPEN — never leave
+          // the booklet stuck invisible/closed for the visitor.
+          let progress = total > 0 ? scrolled / total : 1;
           progress = Math.min(1, Math.max(0, progress));
 
           milaPanels.forEach((panel, i) => {
@@ -4901,20 +4909,26 @@
             panel.style.transform = "rotateY(" + (-90 + local * (90 + rest)) + "deg)";
             panel.style.opacity = String(0.4 + local * 0.6);
           });
-
-          milaTicking = false;
         }
 
-        function onMilaScroll() {
-          if (!milaTicking) {
-            milaTicking = true;
-            requestAnimationFrame(updateMilaFold);
-          }
+        function milaLoop() {
+          paintMilaFold();
+          milaRafId = requestAnimationFrame(milaLoop);
         }
 
-        window.addEventListener("scroll", onMilaScroll, { passive: true });
-        window.addEventListener("resize", onMilaScroll);
-        updateMilaFold();
+        const milaLoopObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting && milaRafId === null) {
+              milaRafId = requestAnimationFrame(milaLoop);
+            } else if (!entry.isIntersecting && milaRafId !== null) {
+              cancelAnimationFrame(milaRafId);
+              milaRafId = null;
+            }
+          });
+        }, { rootMargin: "200px 0px 200px 0px" });
+
+        milaLoopObserver.observe(milaScrollEl);
+        paintMilaFold();
       } else if ("IntersectionObserver" in window) {
         // Mobile: panels stack vertically and reveal one at a time as the
         // user scrolls past each one (unchanged from before).
