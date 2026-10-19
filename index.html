@@ -870,8 +870,12 @@
       display:flex;
       align-items:center;
       justify-content:center;
-      font-size:1.2rem;
-      line-height:1;
+      color:var(--navy);
+    }
+
+    .alyx-benefit-icon svg{
+      width:18px;
+      height:18px;
     }
 
     .alyx-benefit-text{
@@ -1228,22 +1232,22 @@
       top:50%;
       transform:translateY(-50%);
       z-index:8;
-      width:40px;
-      height:40px;
-      border:1px solid rgba(255,255,255,.65);
+      width:38px;
+      height:38px;
+      border:1px solid rgba(255,255,255,.5);
       border-radius:50%;
-      background:rgba(15,35,64,.76);
+      background:rgba(15,35,64,.28);
       color:#fff;
       display:grid;
       place-items:center;
       font-size:1rem;
       cursor:pointer;
-      backdrop-filter:blur(8px);
+      backdrop-filter:blur(6px);
       transition:.18s ease;
     }
 
     .phone-arrow:hover{
-      background:var(--blue-mid);
+      background:rgba(15,35,64,.5);
     }
 
     .phone-arrow-left{ left:10px; }
@@ -4456,19 +4460,19 @@
 
         <div class="alyx-feature-benefits">
           <div class="alyx-benefit">
-            <span class="alyx-benefit-icon" aria-hidden="true">📝</span>
+            <span class="alyx-benefit-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/></svg></span>
             <span class="alyx-benefit-text">Exercícios personalizados</span>
           </div>
           <div class="alyx-benefit">
-            <span class="alyx-benefit-icon" aria-hidden="true">💬</span>
+            <span class="alyx-benefit-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9a2 2 0 0 1-2 2H6l-3 3V5a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2z"/><path d="M18 9h1a2 2 0 0 1 2 2v9l-3-3h-6a2 2 0 0 1-2-2v-1"/></svg></span>
             <span class="alyx-benefit-text">Prática de conversação com IA</span>
           </div>
           <div class="alyx-benefit">
-            <span class="alyx-benefit-icon" aria-hidden="true">📚</span>
+            <span class="alyx-benefit-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg></span>
             <span class="alyx-benefit-text">Vocabulário da sua área</span>
           </div>
           <div class="alyx-benefit">
-            <span class="alyx-benefit-icon" aria-hidden="true">🌍</span>
+            <span class="alyx-benefit-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18"/></svg></span>
             <span class="alyx-benefit-text">Disponível onde você estiver</span>
           </div>
         </div>
