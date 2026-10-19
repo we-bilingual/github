@@ -3609,17 +3609,23 @@
 
     .testimonials{
       background:var(--off);
-      padding:100px 0;
+      padding:70px 0 100px;
+    }
+
+    .testimonials-layout{
+      display:grid;
+      grid-template-columns:.82fr 1.18fr;
+      gap:64px;
+      align-items:center;
     }
 
     .testimonials-head{
-      max-width:640px;
-      margin:0 auto 50px;
-      text-align:center;
+      max-width:420px;
+      text-align:left;
     }
 
     .testimonials-head .eyebrow{
-      justify-content:center;
+      justify-content:flex-start;
       color:var(--red);
       margin-bottom:18px;
     }
@@ -3632,16 +3638,11 @@
       margin-bottom:16px;
     }
 
-    .testimonials-head h2 em{ font-style:italic; font-weight:500; color:var(--blue-mid); }
+    .testimonials-head h2 em{ font-style:italic; font-weight:500; color:var(--red); }
 
-    .testimonials-head p{ color:var(--muted); }
+    .testimonials-head p{ color:var(--muted); margin-bottom:28px; }
 
-    .testimonials-shell{
-      position:relative;
-      display:flex;
-      align-items:center;
-      gap:14px;
-    }
+    .testimonials-carousel{ position:relative; min-width:0; }
 
     .testimonial-track{
       display:flex;
@@ -3656,50 +3657,40 @@
     .testimonial-track::-webkit-scrollbar{ display:none; }
 
     .testimonial-card{
-      flex:0 0 auto;
-      width:min(360px, 80vw);
+      flex:0 0 100%;
+      width:100%;
       scroll-snap-align:start;
       scroll-snap-stop:always;
       background:#fff;
       border-radius:24px;
-      padding:32px;
+      padding:36px;
       box-shadow:0 20px 50px rgba(15,35,64,.08);
       display:flex;
       flex-direction:column;
-      gap:14px;
+      gap:22px;
+    }
+
+    .testimonial-top{
+      display:flex;
+      align-items:flex-start;
+      gap:18px;
     }
 
     .testimonial-avatar{
-      width:52px;
-      height:52px;
+      flex:0 0 auto;
+      width:60px;
+      height:60px;
       border-radius:50%;
       object-fit:cover;
       display:block;
     }
 
-    .testimonial-stars{
-      color:#F5A623;
-      font-size:.9rem;
-      letter-spacing:.1em;
-      margin-top:-6px;
-    }
-
-    .testimonial-tag{
-      align-self:flex-start;
-      padding:6px 12px;
-      border-radius:999px;
-      background:var(--off);
-      color:var(--blue-mid);
-      font-size:.72rem;
-      font-weight:700;
-      text-transform:uppercase;
-      letter-spacing:.04em;
-    }
-
     .testimonial-quote{
+      flex:1 1 auto;
+      min-width:0;
       font-family:"Playfair Display", Georgia, serif;
       font-style:italic;
-      font-size:1.05rem;
+      font-size:1.12rem;
       line-height:1.5;
       color:var(--navy);
       margin:0;
@@ -3708,13 +3699,19 @@
     .testimonial-name{
       font-weight:700;
       color:var(--navy);
-      margin-top:auto;
     }
 
     .testimonial-context{
       font-size:.82rem;
       color:var(--muted);
-      margin-top:-10px;
+      margin-top:2px;
+    }
+
+    .testimonial-nav{
+      display:flex;
+      align-items:center;
+      gap:16px;
+      margin-top:24px;
     }
 
     .testimonial-arrow{
@@ -3734,9 +3731,34 @@
 
     .testimonial-arrow:hover{ background:var(--navy); color:#fff; }
 
+    .testimonial-dots{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      flex:1;
+    }
+
+    .testimonial-dot{
+      width:8px;
+      height:8px;
+      border:0;
+      border-radius:50%;
+      background:var(--line);
+      cursor:pointer;
+      padding:0;
+      transition:.18s ease;
+    }
+
+    .testimonial-dot.active{
+      width:22px;
+      border-radius:5px;
+      background:var(--red);
+    }
+
     .testimonials-cta{
-      margin-top:44px;
-      text-align:center;
+      margin-top:0;
+      text-align:left;
     }
 
     .faq-grid{
@@ -4108,39 +4130,58 @@
 
     .section-head h2 em{ color:var(--red); font-style:italic; }
 
-    .results{ background:var(--paper); }
+    .results{ background:var(--off); padding:100px 0 70px; }
+
+    .results .section-head{
+      max-width:680px;
+      margin-left:auto;
+      margin-right:auto;
+      margin-bottom:56px;
+      text-align:center;
+    }
+
+    .results .section-head .eyebrow{ justify-content:center; }
 
     .results-grid{
       display:grid;
       grid-template-columns:repeat(4, 1fr);
-      gap:28px;
+      gap:22px;
     }
 
     .result-card{
-      text-align:center;
-      padding:8px;
+      text-align:left;
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:20px;
+      padding:28px 24px;
+      box-shadow:0 12px 30px rgba(15,35,64,.05);
     }
 
     .result-icon{
       display:flex;
       align-items:center;
       justify-content:center;
-      width:64px;
-      height:64px;
-      margin:0 auto 20px;
+      width:52px;
+      height:52px;
+      margin:0 0 20px;
       border-radius:50%;
-      background:var(--off);
-      border:1px solid var(--line);
+      background:rgba(192,57,43,.1);
       color:var(--red);
     }
 
-    .result-icon svg{ width:28px; height:28px; }
+    .result-icon svg{ width:23px; height:23px; }
 
     .result-card p{
-      font-size:1.02rem;
-      font-weight:600;
+      font-size:.98rem;
+      font-weight:500;
       color:var(--ink);
-      line-height:1.4;
+      line-height:1.45;
+      margin:0;
+    }
+
+    .result-card p strong{
+      font-weight:700;
+      color:var(--navy);
     }
 
     .final-cta{
@@ -4221,6 +4262,22 @@
       }
 
       .final-cta{ padding:64px 0; }
+
+      /* Testimonials: revert to the stacked, centered, multi-card peek carousel on mobile */
+      .testimonials-layout{
+        grid-template-columns:1fr;
+        gap:36px;
+      }
+      .testimonials-head{
+        max-width:none;
+        text-align:center;
+      }
+      .testimonials-head .eyebrow{ justify-content:center; }
+      .testimonials-cta{ text-align:center; }
+      .testimonial-card{
+        flex:0 0 auto;
+        width:min(360px, 80vw);
+      }
     }
 </style>
 </head>
@@ -4484,7 +4541,8 @@
     <div class="container">
       <div class="section-head">
         <div class="eyebrow">Resultados na vida real</div>
-        <h2>Mais segurança para viver e aproveitar as <em>oportunidades</em> que aparecem.</h2>
+        <h2>Aproveite as <em>oportunidades</em> que aparecem.</h2>
+        <p>Mais segurança para usar o inglês na sua rotina, no trabalho e nas experiências que importam para você.</p>
       </div>
 
       <div class="results-grid">
@@ -4492,87 +4550,108 @@
           <span class="result-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12c0 4.08-4.03 7.5-9 7.5-1.06 0-2.08-.14-3-.4L4 21l1.1-3.3C3.8 16.2 3 14.2 3 12c0-4.08 4.03-7.5 9-7.5s9 3.42 9 7.5Z"/></svg>
           </span>
-          <p>Comunicação com mais confiança</p>
+          <p><strong>Comunicação</strong> com mais confiança</p>
         </div>
 
         <div class="result-card">
           <span class="result-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M8 20h8M12 16v4"/></svg>
           </span>
-          <p>Participação em reuniões e apresentações</p>
+          <p><strong>Participação</strong> em reuniões e apresentações</p>
         </div>
 
         <div class="result-card">
           <span class="result-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="12" rx="1.5"/><path d="M8 7V5.5A1.5 1.5 0 0 1 9.5 4h5A1.5 1.5 0 0 1 16 5.5V7M3 12h18"/></svg>
           </span>
-          <p>Mais oportunidades profissionais e de negócios</p>
+          <p><strong>Mais oportunidades</strong> profissionais e de negócios</p>
         </div>
 
         <div class="result-card">
           <span class="result-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 16.5 21 8c.9-.4 1.8.5 1.4 1.4L14 21l-1.6-6.4L2.5 16.5Z"/><path d="M12.4 14.6 9 18"/></svg>
           </span>
-          <p>Autonomia em viagens e experiências internacionais</p>
+          <p><strong>Autonomia</strong> em viagens e experiências internacionais</p>
         </div>
       </div>
     </div>
   </section>
 
   <section class="testimonials" id="resultados">
-    <div class="container">
+    <div class="container testimonials-layout">
       <div class="testimonials-head">
         <div class="eyebrow">Histórias reais</div>
-        <h2>Quem vive, <em>recomenda.</em></h2>
-        <p>Viagens, reuniões, apresentações e novas oportunidades — histórias reais de alunos que colocaram o inglês para funcionar na vida.</p>
+        <h2>Quem vive <em>recomenda.</em></h2>
+        <p>Alunos que já transformaram o inglês em uma ferramenta real na sua vida.</p>
+
+        <div class="testimonials-cta">
+          <a href="https://wa.me/5544988271830?text=Ol%C3%A1%21%20Quero%20construir%20esse%20resultado%20tamb%C3%A9m." target="_blank" rel="noopener noreferrer" class="button button-primary">Quero construir esse resultado também</a>
+        </div>
       </div>
 
-      <div class="testimonials-shell">
-        <button class="testimonial-arrow testimonial-arrow-left" id="testiPrev" type="button" aria-label="Depoimento anterior">←</button>
-
+      <div class="testimonials-carousel">
         <div class="testimonial-track" id="testimonialTrack">
           <article class="testimonial-card">
-            <img class="testimonial-avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&amp;fit=crop&amp;w=160&amp;q=70" alt="">
-            <div class="testimonial-stars" aria-hidden="true">★★★★★</div>
-            <div class="testimonial-tag">Resultado: viagem internacional</div>
-            <p class="testimonial-quote">Espaço reservado para o depoimento de um aluno sobre uma viagem em que o inglês fez a diferença.</p>
-            <div class="testimonial-name">Nome do aluno</div>
-            <div class="testimonial-context">Aulas Individuais</div>
+            <div class="testimonial-top">
+              <img class="testimonial-avatar" src="https://images.unsplash.com/photo-1787724779241-cb5c250ed70b?auto=format&amp;fit=crop&amp;w=160&amp;q=70" alt="">
+              <p class="testimonial-quote">"Hoje consigo me comunicar com muito mais segurança nas reuniões e viagens. O método MILA faz toda a diferença."</p>
+            </div>
+            <div>
+              <div class="testimonial-name">Ricardo M.</div>
+              <div class="testimonial-context">Empresário</div>
+            </div>
           </article>
 
           <article class="testimonial-card">
-            <img class="testimonial-avatar" src="https://images.unsplash.com/photo-1531750026848-8ada78f641c2?auto=format&amp;fit=crop&amp;w=160&amp;q=70" alt="">
-            <div class="testimonial-stars" aria-hidden="true">★★★★★</div>
-            <div class="testimonial-tag">Resultado: reunião de negócios</div>
-            <p class="testimonial-quote">Espaço reservado para o depoimento de um aluno sobre conduzir uma reunião em inglês com confiança.</p>
-            <div class="testimonial-name">Nome do aluno</div>
-            <div class="testimonial-context">Aulas Individuais</div>
+            <div class="testimonial-top">
+              <img class="testimonial-avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&amp;fit=crop&amp;w=160&amp;q=70" alt="">
+              <p class="testimonial-quote">"Ganhei confiança para falar com clientes internacionais sem travar. Hoje conduzo reuniões em inglês com naturalidade."</p>
+            </div>
+            <div>
+              <div class="testimonial-name">Fernanda L.</div>
+              <div class="testimonial-context">Diretora Comercial</div>
+            </div>
           </article>
 
           <article class="testimonial-card">
-            <img class="testimonial-avatar" src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&amp;fit=crop&amp;w=160&amp;q=70" alt="">
-            <div class="testimonial-stars" aria-hidden="true">★★★★★</div>
-            <div class="testimonial-tag">Resultado: apresentação em inglês</div>
-            <p class="testimonial-quote">Espaço reservado para o depoimento de um aluno sobre apresentar um projeto em inglês pela primeira vez.</p>
-            <div class="testimonial-name">Nome do aluno</div>
-            <div class="testimonial-context">Raio-X + Aulas Individuais</div>
+            <div class="testimonial-top">
+              <img class="testimonial-avatar" src="https://images.unsplash.com/photo-1531750026848-8ada78f641c2?auto=format&amp;fit=crop&amp;w=160&amp;q=70" alt="">
+              <p class="testimonial-quote">"O inglês deixou de ser uma barreira nas minhas viagens a trabalho. Hoje resolvo tudo sozinho, com autonomia."</p>
+            </div>
+            <div>
+              <div class="testimonial-name">Carlos E.</div>
+              <div class="testimonial-context">Executivo de Vendas</div>
+            </div>
           </article>
 
           <article class="testimonial-card">
-            <img class="testimonial-avatar" src="https://images.unsplash.com/photo-1651684215020-f7a5b6610f23?auto=format&amp;fit=crop&amp;w=160&amp;q=70" alt="">
-            <div class="testimonial-stars" aria-hidden="true">★★★★★</div>
-            <div class="testimonial-tag">Resultado: nova oportunidade profissional</div>
-            <p class="testimonial-quote">Espaço reservado para o depoimento de um aluno sobre uma oportunidade profissional aberta pelo inglês.</p>
-            <div class="testimonial-name">Nome do aluno</div>
-            <div class="testimonial-context">Aulas Individuais</div>
+            <div class="testimonial-top">
+              <img class="testimonial-avatar" src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&amp;fit=crop&amp;w=160&amp;q=70" alt="">
+              <p class="testimonial-quote">"Depois da We Bilingual, surgiram oportunidades profissionais que antes pareciam distantes. O inglês abriu portas reais."</p>
+            </div>
+            <div>
+              <div class="testimonial-name">Marina T.</div>
+              <div class="testimonial-context">Gerente de Projetos</div>
+            </div>
+          </article>
+
+          <article class="testimonial-card">
+            <div class="testimonial-top">
+              <img class="testimonial-avatar" src="https://images.unsplash.com/photo-1651684215020-f7a5b6610f23?auto=format&amp;fit=crop&amp;w=160&amp;q=70" alt="">
+              <p class="testimonial-quote">"Incorporei o inglês na minha rotina de trabalho sem esforço. Hoje reviso contratos e falo com parceiros sem depender de tradução."</p>
+            </div>
+            <div>
+              <div class="testimonial-name">Paulo R.</div>
+              <div class="testimonial-context">Consultor</div>
+            </div>
           </article>
         </div>
 
-        <button class="testimonial-arrow testimonial-arrow-right" id="testiNext" type="button" aria-label="Próximo depoimento">→</button>
-      </div>
-
-      <div class="testimonials-cta">
-        <a href="https://wa.me/5544988271830?text=Ol%C3%A1%21%20Quero%20construir%20esse%20resultado%20tamb%C3%A9m." target="_blank" rel="noopener noreferrer" class="button button-primary">Quero construir esse resultado também</a>
+        <div class="testimonial-nav">
+          <button class="testimonial-arrow testimonial-arrow-left" id="testiPrev" type="button" aria-label="Depoimento anterior">←</button>
+          <div class="testimonial-dots" id="testimonialDots"></div>
+          <button class="testimonial-arrow testimonial-arrow-right" id="testiNext" type="button" aria-label="Próximo depoimento">→</button>
+        </div>
       </div>
     </div>
   </section>
@@ -5231,16 +5310,45 @@
     const testimonialTrack = document.getElementById("testimonialTrack");
     const testiPrev = document.getElementById("testiPrev");
     const testiNext = document.getElementById("testiNext");
+    const testimonialDotsWrap = document.getElementById("testimonialDots");
 
-    function scrollTestimonials(direction) {
-      if (!testimonialTrack) return;
-      const card = testimonialTrack.querySelector(".testimonial-card");
-      const step = card ? card.getBoundingClientRect().width + 20 : 300;
-      testimonialTrack.scrollLeft += direction * step;
+    if (testimonialTrack) {
+      const testimonialCards = [...testimonialTrack.querySelectorAll(".testimonial-card")];
+      let testiCurrent = 0;
+
+      if (testimonialDotsWrap) {
+        testimonialCards.forEach((_, i) => {
+          const dot = document.createElement("button");
+          dot.type = "button";
+          dot.className = "testimonial-dot" + (i === 0 ? " active" : "");
+          dot.setAttribute("aria-label", "Ir para depoimento " + (i + 1));
+          dot.addEventListener("click", () => goToTestimonial(i));
+          testimonialDotsWrap.appendChild(dot);
+        });
+      }
+
+      const testimonialDots = testimonialDotsWrap ? [...testimonialDotsWrap.querySelectorAll(".testimonial-dot")] : [];
+
+      function updateTestimonialDots() {
+        testimonialDots.forEach((dot, i) => dot.classList.toggle("active", i === testiCurrent));
+      }
+
+      function goToTestimonial(index) {
+        if (index < 0) index = 0;
+        if (index >= testimonialCards.length) index = testimonialCards.length - 1;
+        testiCurrent = index;
+        const card = testimonialCards[testiCurrent];
+        testimonialTrack.scrollTo({ left: card.offsetLeft - testimonialTrack.offsetLeft, behavior: "auto" });
+        updateTestimonialDots();
+      }
+
+      function scrollTestimonials(direction) {
+        goToTestimonial(testiCurrent + direction);
+      }
+
+      if (testiPrev) testiPrev.addEventListener("click", () => scrollTestimonials(-1));
+      if (testiNext) testiNext.addEventListener("click", () => scrollTestimonials(1));
     }
-
-    if (testiPrev) testiPrev.addEventListener("click", () => scrollTestimonials(-1));
-    if (testiNext) testiNext.addEventListener("click", () => scrollTestimonials(1));
 </script>
 
 
