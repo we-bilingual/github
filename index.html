@@ -207,7 +207,7 @@
 
     .hero-copy { max-width:600px; }
 
-    .hero-copy .eyebrow { color:var(--red); margin-bottom:24px; }
+    .hero-copy .eyebrow { color:var(--red); margin-bottom:18px; }
 
     .hero-copy h1 {
       font-family:"Playfair Display", Georgia, serif;
@@ -261,49 +261,6 @@
 
     .hero-cta{
       margin-top:34px;
-    }
-
-    .hero-context-list{
-      position:absolute;
-      top:0;
-      right:0;
-      z-index:2;
-      list-style:none;
-      margin:0;
-      padding:0;
-      text-align:right;
-      display:flex;
-      flex-direction:column;
-      gap:9px;
-    }
-
-    .hero-context-list::before{
-      content:"";
-      display:inline-block;
-      width:1px;
-      height:26px;
-      margin-left:auto;
-      margin-bottom:4px;
-      background:var(--red);
-      opacity:.7;
-    }
-
-    .hero-context-list li{
-      color:#fff;
-      font-family:"DM Sans", sans-serif;
-      font-size:.74rem;
-      font-weight:500;
-      letter-spacing:.1em;
-      text-transform:uppercase;
-      text-shadow:0 2px 10px rgba(0,0,0,.35);
-      opacity:.92;
-      padding-bottom:9px;
-      border-bottom:1px solid rgba(255,255,255,.25);
-    }
-
-    .hero-context-list li:last-child{
-      border-bottom:0;
-      padding-bottom:0;
     }
 
     .form-card {
@@ -408,14 +365,15 @@
       align-items:start;
     }
 
-    .heart-copy .eyebrow { color:var(--red); margin-bottom:20px; }
+    .heart-copy .eyebrow { color:var(--red); margin-bottom:18px; }
 
     .heart-copy h2 {
       font-family:"Playfair Display", Georgia, serif;
-      font-size:clamp(2.8rem, 4.6vw, 5rem);
-      line-height:.98;
-      margin-bottom:22px;
-      letter-spacing:-.03em;
+      font-size:clamp(2.2rem, 3.4vw, 3.2rem);
+      line-height:1.08;
+      margin-bottom:18px;
+      letter-spacing:-.02em;
+      color:var(--navy);
     }
 
     .heart-copy h2 em { font-style:italic; font-weight:500; color:var(--red); }
@@ -605,9 +563,10 @@
 
     .mila-head h3 {
       font-family:"Playfair Display", Georgia, serif;
-      font-size:2.15rem;
-      margin-bottom:10px;
-      letter-spacing:-.03em;
+      font-size:clamp(2.2rem, 3.4vw, 3.2rem);
+      line-height:1.08;
+      margin-bottom:18px;
+      letter-spacing:-.02em;
       color:var(--navy);
     }
 
@@ -617,6 +576,7 @@
 
     .mila-head p {
       color:var(--muted);
+      font-size:1.05rem;
       margin:0;
     }
 
@@ -821,15 +781,15 @@
 
     .alyx-feature-left .eyebrow{
       color:var(--red);
-      margin-bottom:16px;
+      margin-bottom:18px;
     }
 
     .alyx-feature-left h3{
       font-family:"Playfair Display",Georgia,serif;
-      font-size:2.7rem;
-      line-height:1.02;
-      margin-bottom:16px;
-      letter-spacing:-.03em;
+      font-size:clamp(2.2rem, 3.4vw, 3.2rem);
+      line-height:1.08;
+      margin-bottom:18px;
+      letter-spacing:-.02em;
       max-width:520px;
       color:var(--navy);
     }
@@ -844,7 +804,7 @@
       color:var(--muted);
       max-width:440px;
       margin-bottom:20px;
-      font-size:1rem;
+      font-size:1.05rem;
     }
 
     .alyx-feature-benefits{
@@ -1383,10 +1343,11 @@
 
     .section-head h2 {
       font-family:"Playfair Display", Georgia, serif;
-      font-size:clamp(2.8rem, 4.6vw, 4.9rem);
-      line-height:1;
+      font-size:clamp(2.2rem, 3.4vw, 3.2rem);
+      line-height:1.08;
       margin-bottom:18px;
-      letter-spacing:-.03em;
+      letter-spacing:-.02em;
+      color:var(--navy);
     }
 
     .section-head p {
@@ -1543,7 +1504,13 @@
       display:block;
     }
 
-    .mini-product h4 { font-size:1.08rem; margin:0 0 7px; }
+    .mini-product h4 {
+      font-family:"Playfair Display", Georgia, serif;
+      font-size:1.2rem;
+      letter-spacing:-.02em;
+      color:var(--navy);
+      margin:0 0 7px;
+    }
 
     .mini-product p {
       font-size:.9rem;
@@ -3480,15 +3447,16 @@
 
     .testimonials-head h2{
       font-family:"Playfair Display", Georgia, serif;
-      font-size:clamp(2.2rem, 3.6vw, 3rem);
-      line-height:1.1;
+      font-size:clamp(2.2rem, 3.4vw, 3.2rem);
+      line-height:1.08;
       letter-spacing:-.02em;
-      margin-bottom:16px;
+      margin-bottom:18px;
+      color:var(--navy);
     }
 
     .testimonials-head h2 em{ font-style:italic; font-weight:500; color:var(--red); }
 
-    .testimonials-head p{ color:var(--muted); margin-bottom:28px; }
+    .testimonials-head p{ color:var(--muted); font-size:1.05rem; margin-bottom:28px; }
 
     .testimonials-carousel{ position:relative; min-width:0; }
 
@@ -3881,6 +3849,7 @@
         font-family:"Playfair Display", Georgia, serif;
         font-size:1.5rem;
         letter-spacing:-.02em;
+        color:var(--navy);
         margin-bottom:8px;
       }
       .course-panel p{
@@ -3988,7 +3957,6 @@
       text-align:center;
     }
 
-    .results .section-head h2{ font-size:clamp(2.4rem, 3.6vw, 3.6rem); }
 
     .results .section-head .eyebrow{ justify-content:center; }
 
@@ -4102,7 +4070,6 @@
           linear-gradient(180deg, #fff 0%, rgba(255,255,255,.96) 55%, rgba(255,255,255,.7) 78%, rgba(255,255,255,.3) 100%);
       }
       .hero-bg img{ object-position:66% 78%; }
-      .hero-context-list{ display:none; }
       .hero-cta{ width:100%; }
       .hero-cta.button{ display:flex; justify-content:center; }
 
@@ -4170,7 +4137,7 @@
         <div class="eyebrow">Aulas particulares de inglês</div>
         <h1>O inglês que<br>te acompanha<br><em>onde você quer<br>chegar.</em></h1>
         <p>
-          Aulas personalizadas, método prático e uma plataforma de apoio para você usar o inglês com confiança na sua vida real.
+          Inglês personalizado para adultos que querem usar o idioma no trabalho, nas viagens e na vida real.
         </p>
 
         <div class="hero-meta">
@@ -4179,16 +4146,8 @@
           <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19V11M12 19V5M19 19v-6"/></svg>Plano personalizado</span>
         </div>
 
-        <a href="https://wa.me/5544988271830?text=Ol%C3%A1%21%20Quero%20destravar%20meu%20ingl%C3%AAs." target="_blank" rel="noopener noreferrer" class="button button-primary hero-cta">Quero destravar meu inglês <span aria-hidden="true" style="margin-left:6px;">→</span></a>
+        <a href="https://wa.me/5544988271830?text=Ol%C3%A1%21%20Quero%20destravar%20meu%20ingl%C3%AAs." target="_blank" rel="noopener noreferrer" class="button button-primary hero-cta">Quero usar meu inglês de verdade <span aria-hidden="true" style="margin-left:6px;">→</span></a>
       </section>
-
-      <ul class="hero-context-list">
-        <li>Trabalho</li>
-        <li>Reuniões</li>
-        <li>Viagens</li>
-        <li>Negócios</li>
-        <li>Conexões</li>
-      </ul>
     </div>
   </main>
 
@@ -4240,11 +4199,11 @@
       <div class="mila-section" id="metodo">
         <div class="container mila-layout">
           <div class="mila-head">
-            <div class="eyebrow" style="color:var(--red);margin-bottom:14px;">Método MILA</div>
+            <div class="eyebrow" style="color:var(--red);margin-bottom:18px;">Método MILA</div>
             <h3>Um caminho claro para você usar o inglês <em>de verdade.</em></h3>
             <p>O método MILA conecta o aprendizado à sua rotina e situações reais, para transformar <strong>conhecimento em confiança, prática e comunicação.</strong></p>
             <div class="mila-cta">
-              <a href="https://wa.me/5544988271830?text=Ol%C3%A1%21%20Quero%20conhecer%20o%20m%C3%A9todo%20MILA." target="_blank" rel="noopener noreferrer" class="button button-primary">Conheça o método MILA <span aria-hidden="true">→</span></a>
+              <a href="https://wa.me/5544988271830?text=Ol%C3%A1%21%20Quero%20conhecer%20o%20m%C3%A9todo%20MILA." target="_blank" rel="noopener noreferrer" class="button button-primary">Quero aprender com o método MILA <span aria-hidden="true">→</span></a>
             </div>
           </div>
 
@@ -4314,7 +4273,7 @@
 
           <div class="alyx-included">Inclusa nas aulas personalizadas</div>
 
-          <a href="https://wa.me/5544988271830?text=Ol%C3%A1%21%20Quero%20saber%20mais%20sobre%20a%20ALYX." target="_blank" rel="noopener noreferrer" class="button button-primary alyx-cta">Conheça a ALYX</a>
+          <a href="https://wa.me/5544988271830?text=Ol%C3%A1%21%20Quero%20saber%20mais%20sobre%20a%20ALYX." target="_blank" rel="noopener noreferrer" class="button button-primary alyx-cta">Quero praticar além da aula</a>
 
           <button class="alyx-app-teaser" type="button" aria-haspopup="dialog" aria-controls="alyxSheet">
             <span class="alyx-app-teaser-phone" aria-hidden="true"><span class="alyx-app-teaser-dot"></span></span>
@@ -4431,7 +4390,7 @@
         <p>Alunos que já transformaram o inglês em uma ferramenta real na sua vida.</p>
 
         <div class="testimonials-cta">
-          <a href="https://wa.me/5544988271830?text=Ol%C3%A1%21%20Quero%20construir%20esse%20resultado%20tamb%C3%A9m." target="_blank" rel="noopener noreferrer" class="button button-primary">Quero construir esse resultado também</a>
+          <a href="https://wa.me/5544988271830?text=Ol%C3%A1%21%20Quero%20construir%20esse%20resultado%20tamb%C3%A9m." target="_blank" rel="noopener noreferrer" class="button button-primary">Quero ter essa confiança no inglês</a>
         </div>
       </div>
 
@@ -4529,7 +4488,7 @@
               <li>Mapeamento de objetivos e bloqueios</li>
               <li>Direcionamento dos próximos passos</li>
             </ul>
-            <a href="https://wa.me/5544988271830?text=Ol%C3%A1%21%20Quero%20fazer%20o%20Raio-X%20do%20Ingl%C3%AAs." target="_blank" rel="noopener noreferrer" class="button button-outline">Quero fazer meu Raio-X</a>
+            <a href="https://wa.me/5544988271830?text=Ol%C3%A1%21%20Quero%20fazer%20o%20Raio-X%20do%20Ingl%C3%AAs." target="_blank" rel="noopener noreferrer" class="button button-outline">Quero fazer meu Raio-X de Inglês</a>
           </div>
         </article>
 
@@ -4572,7 +4531,7 @@
               <h4>Viajando sem Perrengue</h4>
               <p>O inglês que você precisa para viajar com mais segurança e tranquilidade.</p>
             </div>
-            <a href="https://hotmart.com/pt-br/marketplace/produtos/ingles-para-viagem-viajando-sem-perrengue/S81341382M?sck=HOTMART_SITE&search=03b13b6e-6ba0-45e1-adf7-198c3319f5a4&hotfeature=33" target="_blank" rel="noopener noreferrer" aria-label="Conhecer o curso Viajando sem Perrengue">Quero conhecer o curso →</a>
+            <a href="https://hotmart.com/pt-br/marketplace/produtos/ingles-para-viagem-viajando-sem-perrengue/S81341382M?sck=HOTMART_SITE&search=03b13b6e-6ba0-45e1-adf7-198c3319f5a4&hotfeature=33" target="_blank" rel="noopener noreferrer" aria-label="Conhecer o curso Viajando sem Perrengue">Quero viajar com mais confiança →</a>
           </article>
 
           <article class="mini-product">
@@ -4581,7 +4540,7 @@
               <h4>IQL — Inglês em Qualquer Lugar</h4>
               <p>Inglês para a sua vida acadêmica e profissional, com foco em leitura, escrita e comunicação.</p>
             </div>
-            <a href="https://hotmart.com/pt-br/marketplace/produtos/ingles-em-qualquer-lugar/M70985834E" target="_blank" rel="noopener noreferrer" aria-label="Conhecer o curso Inglês em Qualquer Lugar">Quero conhecer o IQL →</a>
+            <a href="https://hotmart.com/pt-br/marketplace/produtos/ingles-em-qualquer-lugar/M70985834E" target="_blank" rel="noopener noreferrer" aria-label="Conhecer o curso Inglês em Qualquer Lugar">Quero estudar no meu ritmo →</a>
           </article>
         </div>
 
@@ -4604,7 +4563,7 @@
               <li>Grupo de WhatsApp</li>
               <li>Aulas ao vivo para prática</li>
             </ul>
-            <a href="https://hotmart.com/pt-br/marketplace/produtos/ingles-em-qualquer-lugar/M70985834E" target="_blank" rel="noopener noreferrer" class="button button-outline">Quero conhecer o IQL →</a>
+            <a href="https://hotmart.com/pt-br/marketplace/produtos/ingles-em-qualquer-lugar/M70985834E" target="_blank" rel="noopener noreferrer" class="button button-outline">Quero estudar no meu ritmo →</a>
           </div>
 
           <div class="course-panel" data-course-panel="travel" hidden>
@@ -4618,7 +4577,7 @@
               <li>Restaurante</li>
               <li>Comunicação durante a viagem</li>
             </ul>
-            <a href="https://hotmart.com/pt-br/marketplace/produtos/ingles-para-viagem-viajando-sem-perrengue/S81341382M?sck=HOTMART_SITE&search=03b13b6e-6ba0-45e1-adf7-198c3319f5a4&hotfeature=33" target="_blank" rel="noopener noreferrer" class="button button-outline">Quero conhecer o curso →</a>
+            <a href="https://hotmart.com/pt-br/marketplace/produtos/ingles-para-viagem-viajando-sem-perrengue/S81341382M?sck=HOTMART_SITE&search=03b13b6e-6ba0-45e1-adf7-198c3319f5a4&hotfeature=33" target="_blank" rel="noopener noreferrer" class="button button-outline">Quero viajar com mais confiança →</a>
           </div>
         </div>
       </div>
