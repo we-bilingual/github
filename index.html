@@ -148,17 +148,24 @@
 
     .nav-links{
       display:flex;
+      align-items:center;
       gap:22px;
+      padding:9px 20px;
+      border-radius:999px;
+      background:rgba(255,255,255,.55);
+      backdrop-filter:blur(10px);
+      -webkit-backdrop-filter:blur(10px);
+      box-shadow:0 1px 2px rgba(15,35,64,.06);
     }
 
     .nav-links a{
       color:var(--navy);
       font-size:.86rem;
-      font-weight:600;
-      opacity:.82;
+      font-weight:700;
+      text-shadow:0 1px 12px rgba(255,255,255,.4);
     }
 
-    .nav-links a:hover{ opacity:1; }
+    .nav-links a:hover{ color:var(--red); }
 
     .nav-cta{
       min-height:42px;
@@ -2360,7 +2367,7 @@
 
     .footer-showcase-grid{
       display:grid;
-      grid-template-columns:1.05fr .9fr .8fr 1.1fr;
+      grid-template-columns:1.3fr 1fr 1fr;
       gap:44px;
       align-items:start;
     }
@@ -2434,30 +2441,6 @@
       font-size:.88rem;
       line-height:1.5;
       margin-top:2px;
-    }
-
-    .footer-show-cta{
-      justify-self:end;
-      max-width:330px;
-    }
-
-    .footer-cta-btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      min-height:52px;
-      padding:0 24px;
-      border:1px solid rgba(255,255,255,.58);
-      border-radius:999px;
-      color:#fff;
-      font-weight:700;
-      font-size:.95rem;
-      transition:.18s ease;
-    }
-
-    .footer-cta-btn:hover{
-      background:#fff;
-      color:var(--navy);
     }
 
     .footer-show-bottom{
@@ -2547,10 +2530,6 @@
     @media (max-width: 1080px){
       .footer-showcase-grid{
         grid-template-columns:1fr 1fr;
-      }
-
-      .footer-show-cta{
-        justify-self:start;
       }
     }
 
@@ -3603,27 +3582,6 @@
       width: 100%;
     }
 
-    .faq-cta{
-      margin-top:28px;
-      padding-top:26px;
-      border-top:1px solid rgba(255,255,255,.18);
-      display:flex;
-      align-items:center;
-      flex-wrap:wrap;
-      gap:16px;
-    }
-
-    .faq-cta span{
-      color:var(--blue-light);
-      font-weight:700;
-    }
-
-    .faq-cta .button-outline{
-      background:#fff;
-      border-color:#fff;
-      color:var(--navy);
-    }
-
     @media (max-width: 980px){
       .heart-grid{
         grid-template-columns: 1fr;
@@ -4612,11 +4570,6 @@
           <summary>Quais são as formas de pagamento?</summary>
           <p>As aulas são contratadas por períodos de 6 meses ou 1 ano, com pagamento realizado por link de pagamento, de acordo com o plano contratado.</p>
         </details>
-
-        <div class="faq-cta">
-          <span>Ainda tem dúvidas?</span>
-          <a href="https://wa.me/5544988271830?text=Ol%C3%A1%21%20Tenho%20uma%20d%C3%BAvida%20sobre%20a%20We%20Bilingual." target="_blank" rel="noopener noreferrer" class="button button-outline">Fale com a gente no WhatsApp</a>
-        </div>
       </div>
     </div>
   </section>
@@ -4657,16 +4610,6 @@
       </a>
     </div>
 
-    <div class="footer-show-cta">
-      <a
-        class="footer-cta-btn"
-        href="https://wa.me/5544988271830?text=Ol%C3%A1%21%20Tenho%20uma%20d%C3%BAvida%20sobre%20a%20We%20Bilingual."
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Falar no WhatsApp
-      </a>
-    </div>
   </div>
 
   <div class="container footer-show-bottom">
