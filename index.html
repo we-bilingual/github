@@ -556,11 +556,19 @@
     .mila-layout{
       display:grid;
       grid-template-columns:.62fr 1.38fr;
-      gap:64px;
+      grid-template-areas:
+        "head cards"
+        "cta cards";
+      column-gap:64px;
+      row-gap:0;
       align-items:center;
     }
 
+    .mila-head{ grid-area:head; }
+    .mila-cards{ grid-area:cards; }
+
     .mila-cta{
+      grid-area:cta;
       margin-top:32px;
     }
 
@@ -2274,7 +2282,14 @@
       .mila-layout {
         grid-template-columns:1fr;
       }
-      .mila-layout { gap:36px; }
+      .mila-layout {
+        grid-template-areas:
+          "head"
+          "cards"
+          "cta";
+        row-gap:36px;
+      }
+      .mila-cta { margin-top:0; }
       .mila-head { max-width:none; }
       .statement p { max-width:650px; }
       .experience-stack { grid-template-columns:1fr; }
@@ -4167,9 +4182,6 @@
             <div class="eyebrow" style="color:var(--red);margin-bottom:18px;">Método MILA</div>
             <h3>Um caminho claro para você usar o inglês <em>de verdade.</em></h3>
             <p>O método MILA conecta o aprendizado à sua rotina e situações reais, para transformar <strong>conhecimento em confiança, prática e comunicação.</strong></p>
-            <div class="mila-cta">
-              <a href="https://wa.me/5544988271830?text=Ol%C3%A1%21%20Quero%20conhecer%20o%20m%C3%A9todo%20MILA." target="_blank" rel="noopener noreferrer" class="button button-primary">Quero aprender com o método MILA <span aria-hidden="true">→</span></a>
-            </div>
           </div>
 
           <div class="mila-cards" id="milaCards">
@@ -4212,6 +4224,10 @@
                 <p>Colocar o inglês em prática com exercícios, conversação ao vivo e acompanhamento do professor.</p>
               </div>
             </div>
+          </div>
+
+          <div class="mila-cta">
+            <a href="https://wa.me/5544988271830?text=Ol%C3%A1%21%20Quero%20conhecer%20o%20m%C3%A9todo%20MILA." target="_blank" rel="noopener noreferrer" class="button button-primary">Quero aprender com o método MILA <span aria-hidden="true">→</span></a>
           </div>
         </div>
       </div>
