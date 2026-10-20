@@ -1576,17 +1576,18 @@
 
     .faq-copy h2 {
       font-family:"Playfair Display", Georgia, serif;
-      font-size:clamp(2.6rem, 4vw, 4.5rem);
-      line-height:1;
-      margin-bottom:18px;
-      letter-spacing:-.03em;
+      font-size:clamp(1.8rem, 2.4vw, 2.5rem);
+      line-height:1.15;
+      margin-bottom:24px;
+      letter-spacing:-.02em;
+      white-space:nowrap;
     }
 
     .faq-copy p { color:var(--blue-light); }
 
     details {
       border-top:1px solid rgba(255,255,255,.18);
-      padding:19px 0;
+      padding:28px 0;
     }
 
     details:last-child { border-bottom:1px solid rgba(255,255,255,.18); }
@@ -2450,6 +2451,17 @@
       font-size:1rem;
     }
 
+    .footer-social-link{
+      display:inline-flex;
+      width:22px;
+      height:22px;
+    }
+
+    .footer-social-link svg{
+      width:100%;
+      height:100%;
+    }
+
     .footer-placeholder{
       color:rgba(255,255,255,.42);
       font-size:.88rem;
@@ -2460,15 +2472,6 @@
     .footer-show-cta{
       justify-self:end;
       max-width:330px;
-    }
-
-    .footer-show-cta h3{
-      margin:0 0 24px;
-      font-family:"Playfair Display", Georgia, serif;
-      font-size:2.25rem;
-      line-height:1.18;
-      letter-spacing:-.03em;
-      color:#fff;
     }
 
     .footer-cta-btn{
@@ -2590,9 +2593,6 @@
         gap:28px;
       }
 
-      .footer-show-cta h3{
-        font-size:1.7rem;
-      }
     }
 
 
@@ -4036,30 +4036,30 @@
 
     .final-cta{
       background:var(--navy);
-      padding:100px 0;
+      padding:56px 0;
       text-align:center;
     }
 
     .final-cta-inner{
-      max-width:640px;
+      max-width:560px;
       margin:0 auto;
     }
 
     .final-cta h2{
       font-family:"Playfair Display", Georgia, serif;
-      font-size:clamp(2.4rem, 4vw, 3.4rem);
+      font-size:clamp(1.5rem, 2vw, 1.9rem);
       color:#fff;
-      line-height:1.12;
-      letter-spacing:-.02em;
-      margin-bottom:20px;
+      line-height:1.2;
+      letter-spacing:-.01em;
+      margin-bottom:12px;
     }
 
     .final-cta h2 em{ color:var(--red); font-style:italic; }
 
     .final-cta p{
       color:var(--blue-light);
-      font-size:1.08rem;
-      margin-bottom:34px;
+      font-size:.98rem;
+      margin-bottom:22px;
     }
 
     @media (max-width: 980px) {
@@ -4111,7 +4111,7 @@
         gap:26px 18px;
       }
 
-      .final-cta{ padding:64px 0; }
+      .final-cta{ padding:44px 0; }
 
       /* Testimonials: revert to the stacked, centered, multi-card peek carousel on mobile */
       .testimonials-layout{
@@ -4635,23 +4635,23 @@
 
       <div class="faq-list">
         <details>
-          <summary>As aulas são individuais?</summary>
-          <p>Sim. As aulas da We Bilingual são particulares e construídas de acordo com o objetivo, momento e necessidade de cada aluno.</p>
+          <summary>Para quem são as aulas da We Bilingual?</summary>
+          <p>As aulas são para quem quer aprender ou destravar o inglês, independentemente do nível atual. O caminho é personalizado a partir do seu momento, da sua rotina e do seu objetivo.</p>
         </details>
 
         <details>
-          <summary>Preciso ter inglês para começar?</summary>
-          <p>Não. O ponto de partida é definido a partir do momento atual de cada pessoa. O caminho é personalizado a partir daí.</p>
+          <summary>Como funcionam as aulas?</summary>
+          <p>As aulas são individuais e 100% online, com plano personalizado e frequência semanal ou quinzenal, de acordo com a sua rotina. Você também tem acompanhamento da evolução e acesso à ALYX para praticar entre as aulas.</p>
         </details>
 
         <details>
-          <summary>Como funciona a ALYX?</summary>
-          <p>A ALYX é a plataforma de apoio da We Bilingual: conversação com IA, tarefas diárias e prática complementar. Quem faz as aulas personalizadas tem acesso a esse apoio no dia a dia.</p>
+          <summary>O que é a plataforma ALYX?</summary>
+          <p>A ALYX é a plataforma de apoio da We Bilingual: conversação com IA, tarefas diárias e prática complementar para quem faz as aulas individuais.</p>
         </details>
 
         <details>
-          <summary>Qual a duração do curso?</summary>
-          <p>Nas aulas individuais, o acompanhamento é contínuo, com planos semanais ou quinzenais conforme a sua rotina. Já os cursos de autonomia têm prazo próprio — o IQL, por exemplo, oferece acesso por 2 anos.</p>
+          <summary>Quais são as formas de pagamento?</summary>
+          <p>As aulas são contratadas por períodos de 6 meses ou 1 ano, com pagamento realizado por link de pagamento, de acordo com o plano contratado.</p>
         </details>
 
         <div class="faq-cta">
@@ -4689,11 +4689,16 @@
     <div class="footer-show-links">
       <h4>Explorar</h4>
       <button class="footer-link-btn is-inline" type="button" id="openLegalFooter">LGPD e Termos de Uso</button>
-      <a href="https://www.instagram.com/webilingual/" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="https://www.instagram.com/webilingual/" target="_blank" rel="noopener noreferrer" aria-label="Instagram da We Bilingual" class="footer-social-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+          <circle cx="12" cy="12" r="4.2"></circle>
+          <circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"></circle>
+        </svg>
+      </a>
     </div>
 
     <div class="footer-show-cta">
-      <h3>Quer entender qual é o melhor próximo passo para o seu inglês?</h3>
       <a
         class="footer-cta-btn"
         href="https://wa.me/5544988271830?text=Ol%C3%A1%21%20Tenho%20uma%20d%C3%BAvida%20sobre%20a%20We%20Bilingual."
