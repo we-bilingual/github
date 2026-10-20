@@ -1297,119 +1297,44 @@
       line-height:1.4;
     }
 
-    .mila-book{ width:100%; }
-
-    .mila-book-surface{
-      padding:34px 30px;
-      border-radius:34px;
-      background:linear-gradient(170deg, #EFEAE0 0%, #E3DCCF 100%);
-      box-shadow:0 40px 90px rgba(15,35,64,.18), inset 0 1px 0 rgba(255,255,255,.6);
+    .mila-cards{
+      display:grid;
+      grid-template-columns:repeat(2, 1fr);
+      gap:24px;
     }
 
-    .flip-stage{
-      display:flex;
-      align-items:stretch;
-      border-radius:14px;
+    .mila-card{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:22px;
       overflow:hidden;
-      min-height:480px;
-      perspective:2000px;
-      box-shadow:0 18px 50px rgba(15,35,64,.22);
+      box-shadow:0 24px 50px -16px rgba(15,35,64,.14);
+      opacity:0;
+      transform:translateY(22px);
+      transition:opacity .6s ease, transform .6s ease;
     }
 
-    .flip-sheet{
-      position:relative;
-      flex:1 1 0%;
-      background:#FCFBF6;
-      transform-origin:left center;
-      transform:rotateY(-82deg);
-      opacity:.4;
-      backface-visibility:hidden;
-      will-change:transform, opacity;
-      box-shadow:inset -14px 0 30px -22px rgba(15,35,64,.5);
-      transition:transform 1s cubic-bezier(.22,.68,0,1), opacity .8s ease;
-    }
-
-    #milaBook.is-open .flip-sheet{ opacity:1; }
-    #milaBook.is-open .flip-sheet:nth-child(1){ transform:rotateY(-9deg); transition-delay:0s; }
-    #milaBook.is-open .flip-sheet:nth-child(2){ transform:rotateY(-3deg); transition-delay:.18s; }
-    #milaBook.is-open .flip-sheet:nth-child(3){ transform:rotateY(3deg); transition-delay:.36s; }
-    #milaBook.is-open .flip-sheet:nth-child(4){ transform:rotateY(9deg); transition-delay:.54s; }
+    .mila-card.is-visible{ opacity:1; transform:translateY(0); }
 
     @media (prefers-reduced-motion: reduce){
-      .flip-sheet{ transition:none; }
+      .mila-card{ transition:none; }
     }
 
-    .flip-sheet:last-child{ box-shadow:none; }
-
-    .flip-sheet:nth-child(odd) .page-face-bg{ filter:saturate(.82) brightness(1.02) contrast(1.03); }
-    .flip-sheet:nth-child(even) .page-face-bg{ filter:saturate(.82) brightness(.98) contrast(1.03); }
-
-    .flip-sheet:not(:first-child)::before{
-      content:"";
-      position:absolute;
-      top:0; bottom:0; left:0;
-      width:56px;
-      background:linear-gradient(90deg, rgba(15,35,64,.32) 0%, rgba(15,35,64,.1) 45%, rgba(15,35,64,0) 100%);
-      z-index:4;
-      pointer-events:none;
-    }
-
-    .flip-sheet:not(:first-child)::after{
-      content:"";
-      position:absolute;
-      top:0; bottom:0; left:0;
-      width:2px;
-      background:linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.55) 50%, rgba(255,255,255,0) 100%);
-      z-index:5;
-      pointer-events:none;
-    }
-
-    .page-face{
-      height:100%;
-      min-height:480px;
-      padding:40px 32px 36px;
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-    }
-
-    .page-face.has-bg{
+    .mila-card-media{
       position:relative;
-      isolation:isolate;
+      aspect-ratio:4 / 3;
+      overflow:hidden;
     }
 
-    .page-face-bg{
-      position:absolute;
-      inset:0;
-      background-size:cover;
-      background-position:center;
-      filter:saturate(.82) brightness(1) contrast(1.03);
-      z-index:-2;
+    .mila-card-media img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
     }
 
-    .page-face.has-bg::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:linear-gradient(185deg, rgba(252,251,246,.6) 0%, rgba(252,251,246,.32) 45%, rgba(252,251,246,.58) 100%);
-      z-index:-1;
-    }
-
-    .chapter{
-      font-size:.74rem;
-      letter-spacing:.18em;
-      text-transform:uppercase;
-      font-weight:700;
-      color:var(--blue-mid);
-      display:none;
-    }
-
-    .book-letter{
-      font-family:"Playfair Display",Georgia,serif;
-      font-size:3.6rem;
-      color:var(--red);
-      line-height:.85;
-      margin:0 0 8px;
+    .mila-card-body{
+      padding:24px 26px 28px;
     }
 
     .mila-rule{
@@ -1420,17 +1345,28 @@
       margin:14px 0;
     }
 
-    .page-face h4{
+    .book-letter{
       font-family:"Playfair Display",Georgia,serif;
-      font-size:1.6rem;
-      line-height:1.05;
-      color:var(--navy);
-      letter-spacing:-.02em;
+      font-size:2.1rem;
+      color:var(--red);
+      line-height:1;
+      margin:0;
     }
 
-    .page-face p{
+    .mila-card-body h4{
+      font-family:"Playfair Display",Georgia,serif;
+      font-size:1.35rem;
+      line-height:1.1;
+      color:var(--navy);
+      letter-spacing:-.02em;
+      margin:0 0 10px;
+    }
+
+    .mila-card-body p{
       color:var(--muted);
       font-size:.95rem;
+      line-height:1.45;
+      margin:0;
     }
 
     .products {
@@ -2343,35 +2279,6 @@
       .book-page{
         min-height:460px;
       }
-      .flip-stage,
-      .page-face{
-        min-height:460px;
-      }
-      .page-face{
-        justify-content:flex-start;
-        padding:40px 26px 60px;
-      }
-      .chapter{
-        display:inline-block;
-        font-size:.7rem;
-      }
-      .book-letter{
-        font-size:3rem;
-        line-height:.9;
-        margin:14px 0 10px;
-      }
-      .page-face h4{
-        font-size:1.5rem;
-        margin-bottom:10px;
-      }
-      .page-face p{
-        font-size:.92rem;
-      }
-      .page-face blockquote{
-        margin-top:10px;
-        padding-top:14px;
-        font-size:.95rem;
-      }
       .cover-face h4{
         font-size:2.8rem;
         margin:14px 0 8px;
@@ -2381,66 +2288,6 @@
         margin-bottom:22px;
       }
 
-      /* MILA mobile: folheto que se abre — steps stack and reveal on scroll instead of tap-to-flip */
-      .book-nav{ display:none; }
-
-      .mila-book-surface{
-        padding:0;
-        border-radius:0;
-        background:none;
-        box-shadow:none;
-      }
-
-      .flip-stage{
-        display:block;
-        min-height:unset;
-        border-radius:0;
-        box-shadow:none;
-        overflow:visible;
-      }
-
-      .flip-sheet{
-        display:block;
-        width:100%;
-        position:static;
-        opacity:1;
-        transform:none;
-        pointer-events:auto;
-        margin-bottom:18px;
-        border-right:0;
-        box-shadow:none;
-        transition:none;
-      }
-
-      .flip-sheet::before,
-      .flip-sheet::after{
-        display:none;
-      }
-
-      .flip-sheet:nth-child(odd) .page-face-bg,
-      .flip-sheet:nth-child(even) .page-face-bg{
-        filter:saturate(.82) brightness(1) contrast(1.03);
-      }
-
-      .flip-sheet[data-book-page="0"]{
-        display:none;
-      }
-
-      .page-face{
-        min-height:unset;
-        border-radius:18px;
-      }
-
-      .mila-step-reveal{
-        opacity:0;
-        transform:translateY(22px);
-        transition:opacity .6s ease, transform .6s ease;
-      }
-
-      .mila-step-reveal.is-visible{
-        opacity:1;
-        transform:translateY(0);
-      }
     }
 
     @media (max-width: 980px) {
@@ -2466,6 +2313,7 @@
     }
 
     @media (max-width: 640px) {
+      .mila-cards { grid-template-columns:1fr; }
       .container { width:min(calc(100% - 28px), var(--max)); }
       .nav { width:calc(100% - 28px); }
       .nav-note { display:none; }
@@ -4400,49 +4248,45 @@
             </div>
           </div>
 
-          <div class="mila-book" id="milaBook">
-            <div class="mila-book-surface">
-            <div class="flip-stage">
-              <div class="flip-sheet" data-book-page="1">
-                <div class="page-face has-bg"><div class="page-face-bg" style="background-image:url('https://images.pexels.com/photos/15673106/pexels-photo-15673106.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200')"></div>
-                  <span class="chapter">01 — MENTALIDADE</span>
-                  <div class="book-letter">M</div>
-                  <h4>Mentalidade</h4>
-                  <span class="mila-rule"></span>
-                  <p>Confiança para se comunicar de verdade.</p>
-                </div>
-              </div>
-
-              <div class="flip-sheet" data-book-page="2">
-                <div class="page-face has-bg"><div class="page-face-bg" style="background-image:url('https://images.pexels.com/photos/4226140/pexels-photo-4226140.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200')"></div>
-                  <span class="chapter">02 — IMERSÃO</span>
-                  <div class="book-letter">I</div>
-                  <h4>Imersão</h4>
-                  <span class="mila-rule"></span>
-                  <p>Contato constante com o inglês no seu dia a dia.</p>
-                </div>
-              </div>
-
-              <div class="flip-sheet" data-book-page="3">
-                <div class="page-face has-bg"><div class="page-face-bg" style="background-image:url('https://images.pexels.com/photos/5186315/pexels-photo-5186315.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200')"></div>
-                  <span class="chapter">03 — LÓGICA</span>
-                  <div class="book-letter">L</div>
-                  <h4>Lógica</h4>
-                  <span class="mila-rule"></span>
-                  <p>Entender o idioma de forma simples e prática.</p>
-                </div>
-              </div>
-
-              <div class="flip-sheet" data-book-page="4">
-                <div class="page-face has-bg"><div class="page-face-bg" style="background-image:url('https://images.pexels.com/photos/6147016/pexels-photo-6147016.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200')"></div>
-                  <span class="chapter">04 — ATIVAÇÃO</span>
-                  <div class="book-letter">A</div>
-                  <h4>Ativação</h4>
-                  <span class="mila-rule"></span>
-                  <p>Transformar o inglês em uso real.</p>
-                </div>
+          <div class="mila-cards" id="milaCards">
+            <div class="mila-card">
+              <div class="mila-card-media"><img src="mentalidade.png" alt="Mentalidade" loading="lazy"></div>
+              <div class="mila-card-body">
+                <div class="book-letter">M</div>
+                <h4>Mentalidade</h4>
+                <span class="mila-rule"></span>
+                <p>Confiança para se comunicar de verdade.</p>
               </div>
             </div>
+
+            <div class="mila-card">
+              <div class="mila-card-media"><img src="imersao.png" alt="Imersão" loading="lazy"></div>
+              <div class="mila-card-body">
+                <div class="book-letter">I</div>
+                <h4>Imersão</h4>
+                <span class="mila-rule"></span>
+                <p>Contato constante com o inglês no seu dia a dia.</p>
+              </div>
+            </div>
+
+            <div class="mila-card">
+              <div class="mila-card-media"><img src="logica.png" alt="Lógica" loading="lazy"></div>
+              <div class="mila-card-body">
+                <div class="book-letter">L</div>
+                <h4>Lógica</h4>
+                <span class="mila-rule"></span>
+                <p>Entender o idioma de forma simples e prática.</p>
+              </div>
+            </div>
+
+            <div class="mila-card">
+              <div class="mila-card-media"><img src="ativacao.png" alt="Ativação" loading="lazy"></div>
+              <div class="mila-card-body">
+                <div class="book-letter">A</div>
+                <h4>Ativação</h4>
+                <span class="mila-rule"></span>
+                <p>Transformar o inglês em uso real.</p>
+              </div>
             </div>
           </div>
         </div>
@@ -5022,39 +4866,10 @@
       });
     }
 
-    const milaBookEl = document.getElementById("milaBook");
-    const milaPanels = milaBookEl ? [...milaBookEl.querySelectorAll(".flip-sheet")] : [];
+    const milaCards = [...document.querySelectorAll(".mila-card")];
 
-    if (milaBookEl && milaPanels.length) {
-      const isMilaDesktop = window.matchMedia("(min-width: 981px)").matches;
-
-      if (isMilaDesktop) {
-        // Desktop: the booklet starts closed and unfolds once, automatically,
-        // the first time it scrolls into view — not tied to scroll position
-        // (scrolling back up no longer re-closes it), just a single trigger
-        // that plays a CSS transition. Each page settles at a slight resting
-        // angle (not perfectly flat) so the open book keeps a visible fold.
-        const milaOpenObserver = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              milaBookEl.classList.add("is-open");
-              milaOpenObserver.unobserve(entry.target);
-            }
-          });
-        }, { threshold: 0.25 });
-
-        milaOpenObserver.observe(milaBookEl);
-
-        // Safety net: guarantee it opens even if the observer never fires.
-        setTimeout(() => {
-          milaBookEl.classList.add("is-open");
-          milaOpenObserver.disconnect();
-        }, 2500);
-      } else if ("IntersectionObserver" in window) {
-        // Mobile: panels stack vertically and reveal one at a time as the
-        // user scrolls past each one (unchanged from before).
-        milaPanels.forEach(step => step.classList.add("mila-step-reveal"));
-
+    if (milaCards.length) {
+      if ("IntersectionObserver" in window) {
         const milaObserver = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -5064,12 +4879,17 @@
           });
         }, { threshold: 0.2, rootMargin: "0px 0px -60px 0px" });
 
-        milaPanels.forEach(step => milaObserver.observe(step));
+        milaCards.forEach((card, i) => {
+          card.style.transitionDelay = (i * 0.1) + "s";
+          milaObserver.observe(card);
+        });
 
         setTimeout(() => {
-          milaPanels.forEach(step => step.classList.add("is-visible"));
+          milaCards.forEach(card => card.classList.add("is-visible"));
           milaObserver.disconnect();
         }, 2500);
+      } else {
+        milaCards.forEach(card => card.classList.add("is-visible"));
       }
     }
 
