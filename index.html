@@ -2309,7 +2309,7 @@
       .nav-note { display:none; }
       .hero {
         min-height:auto;
-        padding:96px 0 52px;
+        padding:96px 0 0;
       }
       .hero-break-tight { display:none; }
       .hero-copy h1 { font-size:2.2rem; line-height:1.18; margin-bottom:16px; }
@@ -4058,18 +4058,30 @@
       }
       .nav-mobile-menu .button{ margin-top:12px; }
 
-      /* Hero: full-bleed photo stays as background; strengthen the light
-         overlay so stacked copy stays readable on narrow screens, and hide
-         the decorative context list to avoid colliding with the text. */
-      .hero-overlay{
-        background:
-          linear-gradient(180deg, #fff 0%, #fff 36%, rgba(255,255,255,.88) 46%, rgba(255,255,255,.4) 58%, rgba(255,255,255,.08) 72%, rgba(255,255,255,0) 85%);
+      /* Hero: text and photo no longer share the same frame. The photo
+         becomes its own rounded card placed after the CTA, in normal
+         document flow, so nothing ever overlaps the copy. */
+      .hero{
+        display:flex;
+        flex-direction:column;
+      }
+      .hero-overlay{ display:none; }
+      .hero-content{ order:2; }
+      .hero-bg{
+        position:relative;
+        inset:auto;
+        order:3;
+        width:calc(100% - 48px);
+        height:360px;
+        margin:28px auto 36px;
+        border-radius:28px;
+        overflow:hidden;
       }
       .hero-bg img{
-        width:150%;
-        height:150%;
-        max-width:none;
-        object-position:76% 0%;
+        width:100%;
+        height:100%;
+        object-fit:cover;
+        object-position:68% 24%;
       }
       .hero-cta{ width:auto; }
 
