@@ -3479,6 +3479,7 @@
 
     .testimonial-track{
       display:flex;
+      align-items:flex-start;
       gap:20px;
       overflow-x:auto;
       scroll-snap-type:x mandatory;
@@ -3496,19 +3497,24 @@
       scroll-snap-stop:always;
       background:#fff;
       border-radius:24px;
-      padding:36px;
+      padding:40px 44px;
       box-shadow:0 20px 50px rgba(15,35,64,.08);
       display:flex;
       flex-direction:column;
       gap:22px;
     }
 
-    .testimonial-top{
+    .testimonial-person{
       display:flex;
-      align-items:flex-start;
-      gap:18px;
+      flex-direction:column;
+      gap:3px;
+      padding-bottom:20px;
+      border-bottom:1px solid var(--line);
     }
 
+    /* Reserved for a future profile photo: add
+       <img class="testimonial-avatar" src="..."> as the first child of
+       .testimonial-top and it will sit beside the quote automatically. */
     .testimonial-avatar{
       flex:0 0 auto;
       width:60px;
@@ -3518,26 +3524,48 @@
       display:block;
     }
 
+    .testimonial-top{
+      display:flex;
+      align-items:flex-start;
+      gap:18px;
+    }
+
     .testimonial-quote{
       flex:1 1 auto;
       min-width:0;
       font-family:"Playfair Display", Georgia, serif;
       font-style:italic;
-      font-size:1.12rem;
-      line-height:1.5;
+      font-size:1.08rem;
+      line-height:1.62;
       color:var(--navy);
       margin:0;
     }
 
     .testimonial-name{
-      font-weight:700;
+      font-family:"Playfair Display", Georgia, serif;
+      font-size:1.2rem;
+      font-weight:600;
       color:var(--navy);
     }
 
     .testimonial-context{
-      font-size:.82rem;
+      font-size:.78rem;
+      font-weight:700;
+      letter-spacing:.06em;
+      text-transform:uppercase;
       color:var(--muted);
-      margin-top:2px;
+    }
+
+    .testimonial-goal{
+      font-size:.92rem;
+      line-height:1.45;
+      color:var(--ink);
+      margin:6px 0 0;
+    }
+
+    .testimonial-goal strong{
+      color:var(--red);
+      font-weight:700;
     }
 
     .testimonial-nav{
@@ -4104,8 +4132,7 @@
       .testimonials-head .eyebrow{ justify-content:center; }
       .testimonials-cta{ text-align:center; }
       .testimonial-card{
-        flex:0 0 auto;
-        width:min(360px, 80vw);
+        padding:32px 28px;
       }
 
       .results{ padding:56px 0 40px; }
@@ -4414,57 +4441,46 @@
       <div class="testimonials-carousel">
         <div class="testimonial-track" id="testimonialTrack">
           <article class="testimonial-card">
-            <div class="testimonial-top">
-              <img class="testimonial-avatar" src="https://images.unsplash.com/photo-1787724779241-cb5c250ed70b?auto=format&amp;fit=crop&amp;w=160&amp;q=70" alt="">
-              <p class="testimonial-quote">"Hoje consigo me comunicar com muito mais segurança nas reuniões e viagens. O método MILA faz toda a diferença."</p>
+            <div class="testimonial-person">
+              <div class="testimonial-name">Natália Uwarow</div>
+              <div class="testimonial-context">Empresária</div>
+              <p class="testimonial-goal"><strong>Objetivo:</strong> Inglês para negócios e desenvolvimento profissional</p>
             </div>
-            <div>
-              <div class="testimonial-name">Ricardo M.</div>
-              <div class="testimonial-context">Empresário</div>
+            <div class="testimonial-top">
+              <p class="testimonial-quote">"Faço inglês há 8 meses com vocês, e a maior prova é a minha percepção perante ao inglês, do quanto eu evoluí e aprendi até agora! Atualmente, minha maior dificuldade tem sido listening, mas não tenho nada a reclamar. Pelo contrário, apenas elogiar a prof. Roberta e a Natália, que sempre estão super atentas comigo e se dedicando para que eu aprenda."</p>
             </div>
           </article>
 
           <article class="testimonial-card">
-            <div class="testimonial-top">
-              <img class="testimonial-avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&amp;fit=crop&amp;w=160&amp;q=70" alt="">
-              <p class="testimonial-quote">"Ganhei confiança para falar com clientes internacionais sem travar. Hoje conduzo reuniões em inglês com naturalidade."</p>
+            <div class="testimonial-person">
+              <div class="testimonial-name">Anna Luiza Pizzi</div>
+              <div class="testimonial-context">25 anos</div>
+              <p class="testimonial-goal"><strong>Objetivo:</strong> Inglês para viagens e estudos em geral</p>
             </div>
-            <div>
-              <div class="testimonial-name">Fernanda L.</div>
-              <div class="testimonial-context">Diretora Comercial</div>
+            <div class="testimonial-top">
+              <p class="testimonial-quote">"Senti muita diferença no meu rendimento e desenvolvimento no inglês. Sinto que estou mais familiarizada com o idioma e perdi o medo de me comunicar. As aulas são maravilhosas, com ótima explicação da Teacher Roberta. Excelente teacher e aulas muito explicativas. Ótima experiência com a We Bilingual!"</p>
             </div>
           </article>
 
           <article class="testimonial-card">
-            <div class="testimonial-top">
-              <img class="testimonial-avatar" src="https://images.unsplash.com/photo-1531750026848-8ada78f641c2?auto=format&amp;fit=crop&amp;w=160&amp;q=70" alt="">
-              <p class="testimonial-quote">"O inglês deixou de ser uma barreira nas minhas viagens a trabalho. Hoje resolvo tudo sozinho, com autonomia."</p>
+            <div class="testimonial-person">
+              <div class="testimonial-name">Gabriela Damasceno</div>
+              <div class="testimonial-context">Residente no exterior</div>
+              <p class="testimonial-goal"><strong>Objetivo:</strong> Inglês para carreira profissional</p>
             </div>
-            <div>
-              <div class="testimonial-name">Carlos E.</div>
-              <div class="testimonial-context">Executivo de Vendas</div>
+            <div class="testimonial-top">
+              <p class="testimonial-quote">"Estou gostando muito! A didática do Jonas é muito boa, ele está sempre atento aos detalhes. Tenho um pouco de dificuldade e ele não deixa escapar nada, muito bom! Os conteúdos da Natália que estão disponíveis também são ótimos. Agora o meu inglês vai!"</p>
             </div>
           </article>
 
           <article class="testimonial-card">
+            <div class="testimonial-person">
+              <div class="testimonial-name">Viviane Nogueira</div>
+              <div class="testimonial-context">Aluna We Bilingual</div>
+              <p class="testimonial-goal"><strong>Objetivo:</strong> Inglês para viagens e desenvolvimento pessoal</p>
+            </div>
             <div class="testimonial-top">
-              <img class="testimonial-avatar" src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&amp;fit=crop&amp;w=160&amp;q=70" alt="">
-              <p class="testimonial-quote">"Depois da We Bilingual, surgiram oportunidades profissionais que antes pareciam distantes. O inglês abriu portas reais."</p>
-            </div>
-            <div>
-              <div class="testimonial-name">Marina T.</div>
-              <div class="testimonial-context">Gerente de Projetos</div>
-            </div>
-          </article>
-
-          <article class="testimonial-card">
-            <div class="testimonial-top">
-              <img class="testimonial-avatar" src="https://images.unsplash.com/photo-1651684215020-f7a5b6610f23?auto=format&amp;fit=crop&amp;w=160&amp;q=70" alt="">
-              <p class="testimonial-quote">"Incorporei o inglês na minha rotina de trabalho sem esforço. Hoje reviso contratos e falo com parceiros sem depender de tradução."</p>
-            </div>
-            <div>
-              <div class="testimonial-name">Paulo R.</div>
-              <div class="testimonial-context">Consultor</div>
+              <p class="testimonial-quote">"Minha experiência com a We Bilingual tem sido muito positiva até agora. Estou gostando bastante da metodologia, do acompanhamento e principalmente da forma como as aulas são conduzidas, de maneira leve e eficiente. Tenho sentido evolução no meu inglês e isso me deixa muito motivada. A Natália também é muito atenciosa, sempre presente e preocupada com nosso desenvolvimento, o que faz toda diferença no processo. No geral, estou muito satisfeita."</p>
             </div>
           </article>
         </div>
